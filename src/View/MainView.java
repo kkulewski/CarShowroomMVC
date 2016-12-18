@@ -10,7 +10,7 @@ public class MainView extends JFrame
 {
 	JMenuBar menuBar;
 	JMenu menuMain, menuClient;
-	JMenuItem clientAdd, clientList;
+	JMenuItem clientAdd, clientList, clientSearch;
 	
 	public MainView()
 	{
@@ -34,22 +34,28 @@ public class MainView extends JFrame
 		menuClient.add(clientAdd);
 		clientList = new JMenuItem("List clients");
 		menuClient.add(clientList);
+		clientSearch = new JMenuItem("Search client...");
+		menuClient.add(clientSearch);
 		
 	}
 	
-	//FIX TO CONSINSTENT NAMES
-	public void AddClientListener(ActionListener addClientListener) 
+	public void ClientAddListener(ActionListener clientAddListener) 
 	{
-		clientAdd.addActionListener(addClientListener);
+		clientAdd.addActionListener(clientAddListener);
 	}
 	
-	public void ListClientListener(ActionListener addClientListener) 
+	public void ClientListListener(ActionListener clientListListener) 
 	{
-		clientList.addActionListener(addClientListener);
+		clientList.addActionListener(clientListListener);
+	}
+	
+	public void ClientSearchListener(ActionListener clientSearchListener) 
+	{
+		clientSearch.addActionListener(clientSearchListener);
 	}
 	
 	public void ActionCommited()
 	{
-		JOptionPane.showMessageDialog(null, "AddClient clicked");
+		JOptionPane.showMessageDialog(null, "Button clicked");
 	}
 }

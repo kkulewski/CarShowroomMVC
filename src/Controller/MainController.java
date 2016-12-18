@@ -13,11 +13,31 @@ public class MainController
 	{
 		this.mainView = mainView;
 		
-		mainView.AddClientListener(new addClientListener());
+		mainView.ClientAddListener(new ClientAddListener());
+		mainView.ClientListListener(new ClientListListener());
+		mainView.ClientSearchListener(new ClientSearchListener());
 	}
 	
 	
-	class addClientListener implements ActionListener
+	class ClientAddListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			mainView.ActionCommited();	
+		}
+	}
+	
+	class ClientListListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			mainView.ActionCommited();	
+		}
+	}
+	
+	class ClientSearchListener implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
