@@ -35,6 +35,7 @@ public class Database
         
     }
     
+    //TODO: ADD UNIQUE, NOT NULL ETC
     public boolean CreateTables() 
     {
         String createClientQuery = ""

@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -35,15 +36,32 @@ public class ClientModel extends Database
 	//STUB - GET DATA FROM DB, PUT INTO ARRAYLIST AND RETURN
 	public ArrayList<Client> listClient()
 	{
-		Client client1 = new Client(7, "Jan", "Kowalski", 99999999999L, "Warszawa", "Dluga 2");
-		Client client2 = new Client(7, "Tomasz", "Nowak", 12345678901L, "Gdansk", "Krotka 1");
-		Client client3 = new Client(7, "Mateusz", "Wisniewski", 55555555555L, "Poznan", "Srednia 3");
 		ArrayList<Client> clientList = new ArrayList<Client>();
-		clientList.add(client1);
-		clientList.add(client2);
-		clientList.add(client3);
 		
-		return clientList;
+	    try 
+	    {
+	        ResultSet result = stat.executeQuery("SELECT * FROM client");
+	        int id;
+	        long pesel;
+	        String name, surname, city, street;
+	        while(result.next()) 
+	        {
+	            id = result.getInt("id_client");
+	            name = result.getString("name");
+	            surname = result.getString("surname");
+	            pesel = result.getLong("pesel");
+	            city = result.getString("city");
+	            street = result.getString("street");
+	            clientList.add(new Client(id, name, surname, pesel, city, street));
+	        }
+	        result.close();
+	    } 
+	    catch (SQLException e) 
+	    {
+	        e.printStackTrace();
+	        return null;
+	    }
+	    return clientList;
 	}
 	
 }
