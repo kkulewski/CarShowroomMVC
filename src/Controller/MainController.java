@@ -11,16 +11,23 @@ import View.MainView;
 public class MainController 
 {
 	private MainView mainView;
+	
+	private ClientController clientController;
 	private ClientAddView clientAddView;
 	private ClientListView clientListView;
 	private ClientSearchView clientSearchView;
+
 	
 	public MainController(MainView mainView)
 	{
 		this.mainView = mainView;
+		
 		this.clientAddView = new ClientAddView();
 		this.clientListView = new ClientListView();
 		this.clientSearchView = new ClientSearchView();
+		
+		this.clientController = new ClientController(clientAddView);
+		clientAddView.ClientAddSubmitListener(clientController.clientAddSubmitListener);
 		
 		mainView.ClientAddListener(new ClientAddListener());
 		mainView.ClientListListener(new ClientListListener());
@@ -28,6 +35,7 @@ public class MainController
 	}
 	
 	
+	//TODO: BETTER NAMING FOR EVENT HANDLERS
 	class ClientAddListener implements ActionListener
 	{
 		@Override
