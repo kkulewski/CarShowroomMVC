@@ -14,9 +14,6 @@ public class Host {
 		mainView.setVisible(true);
 		
 		MainController mainController = new MainController(mainView);
-		
-		ClientController clientController = new ClientController();
-		clientController.InsertClient("Jan", "Kowalski", 12345678901L, "Warszawa", "Dluga 1");
 	}
 
 }
