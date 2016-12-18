@@ -9,8 +9,8 @@ import javax.swing.*;
 public class MainView extends JFrame
 {
 	JMenuBar menuBar;
-	JMenu menuMain, menuClient;
-	JMenuItem clientAdd, clientList, clientSearch;
+	JMenu menuMain, menuClient, menuWorker;
+	JMenuItem clientAdd, clientList, clientSearch, workerAdd, workerList, workerSearch;
 	
 	public MainView()
 	{
@@ -26,7 +26,7 @@ public class MainView extends JFrame
 		menuMain = new JMenu("Main");
 		menuBar.add(menuMain);
 		
-		
+		//CLIENT
 		menuClient = new JMenu("Client");
 		menuBar.add(menuClient);
 		
@@ -37,6 +37,16 @@ public class MainView extends JFrame
 		clientSearch = new JMenuItem("Search client...");
 		menuClient.add(clientSearch);
 		
+		//WORKER
+		menuWorker = new JMenu("Worker");
+		menuBar.add(menuWorker);
+		
+		workerAdd = new JMenuItem("Add new worker");
+		menuWorker.add(workerAdd);
+		workerList = new JMenuItem("List workers");
+		menuWorker.add(workerList);
+		workerSearch = new JMenuItem("Search worker...");
+		menuWorker.add(workerSearch);
 	}
 	
 	public void ClientAddListener(ActionListener clientAddListener) 
