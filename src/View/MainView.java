@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class MainView extends JFrame
 	{
 		
 		this.setSize(new Dimension(600,400));
+		this.setLayout(new GridBagLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Car Showroom");
 		
