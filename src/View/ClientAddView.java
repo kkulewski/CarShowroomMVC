@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,27 +14,27 @@ import javax.swing.JTextField;
 public class ClientAddView extends JPanel
 {
 	//NAME
-	JTextField nameField = new JTextField(20);
+	public JTextField nameField = new JTextField(20);
 	JLabel nameLabel = new JLabel("Name:");
 	
 	//SURNAME
-	JTextField surnameField = new JTextField(20);
+	public JTextField surnameField = new JTextField(20);
 	JLabel surnameLabel = new JLabel("Surname:");
 	
 	//PESEL
-	JTextField peselField = new JTextField(20);
+	public JTextField peselField = new JTextField(20);
 	JLabel peselLabel = new JLabel("PESEL:");
 	
 	//CITY
-	JTextField cityField = new JTextField(20);
+	public JTextField cityField = new JTextField(20);
 	JLabel cityLabel = new JLabel("City:");
 	
 	//STREET
-	JTextField streetField = new JTextField(20);
+	public JTextField streetField = new JTextField(20);
 	JLabel streetLabel = new JLabel("Street:");
 	
 	//SUBMIT BUTTON
-	JButton submitButton = new JButton("Add");
+	public JButton submitButton = new JButton("Add");
 	
 	public ClientAddView()
 	{
@@ -120,5 +121,10 @@ public class ClientAddView extends JPanel
 		c.gridwidth = 2;
 		c.insets = new Insets(10,80,0,80);
 		this.add(submitButton, c);
+	}
+	
+	public void ClientAddSubmitListener(ActionListener clientAddSubmitListener) 
+	{
+		submitButton.addActionListener(clientAddSubmitListener);
 	}
 }
