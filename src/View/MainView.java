@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
@@ -17,7 +16,6 @@ public class MainView extends JFrame
 		
 		this.setSize(new Dimension(600,400));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(new CardLayout());
 		this.setTitle("Car Showroom");
 		
 		menuBar = new JMenuBar();
