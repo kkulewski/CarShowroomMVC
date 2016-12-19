@@ -3,6 +3,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.Client;
 import Model.ClientModel;
 import View.ClientAddView;
 import View.ClientListView;
@@ -67,7 +68,10 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
+			int selectedRow = clientListView.clientList.getSelectedRow();
+			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
 			
+			System.out.println("Removing "+selectedClient.getId()+" from db");
 		}
 	}
 }

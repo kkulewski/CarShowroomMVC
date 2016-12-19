@@ -18,6 +18,9 @@ public class ClientListView extends JPanel
 	public JButton editButton = new JButton("Edit");
 	public JButton removeButton = new JButton("Remove");
 	
+	//TODO: move to controller somehow
+	public ClientTableModel clientTableModel;
+	
 	public ClientListView(ClientTableModel clientTableModel)
 	{
 		this.setVisible(true);
@@ -45,7 +48,8 @@ public class ClientListView extends JPanel
 		c.gridx = 1;
 		c.gridy = 1;
 		
-		this.clientList = new JTable(clientTableModel);
+		this.clientTableModel = clientTableModel;
+		this.clientList = new JTable(this.clientTableModel);
 		this.clientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.add(clientList, c);
 		
