@@ -33,7 +33,7 @@ public class ClientController
 	
 	public void DeleteClient(int id)
 	{
-		clientModel.removeClient(id);
+		clientModel.deleteClient(id);
 	}
 	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
@@ -76,7 +76,6 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
-			System.out.println("REMOVE");
 			int selectedRow = clientListView.clientList.getSelectedRow();
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
 			int selectedClientId = selectedClient.getId();
@@ -84,6 +83,12 @@ public class ClientController
 			//TODO: add confirmation popup
 			
 			DeleteClient(selectedClientId);
+			
+			//reload clientTable data from DB
+			clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
+			//update view
+			clientListView.invalidate();
+			clientListView.validate();
 		}
 	}
 }
