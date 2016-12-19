@@ -49,4 +49,22 @@ public class ClientController
 			System.out.println("Added record: [" + name + "] [" + surname + "] [" + pesel + "] [" + city + "] [" + street + "] to db");
 		}
 	}
+	
+	class ClientEditListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			
+		}
+	}
+	
+	class ClientRemoveListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			
+		}
+	}
 }
