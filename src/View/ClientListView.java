@@ -56,4 +56,14 @@ public class ClientListView extends JPanel
 		*/
 		
 	}
+	
+	public void ClientEditListener(ActionListener clientEditListener) 
+	{
+		editButton.addActionListener(clientEditListener);
+	}
+	
+	public void ClientRemoveListener(ActionListener clientRemoveListener) 
+	{
+		removeButton.addActionListener(clientRemoveListener);
+	}
 }
