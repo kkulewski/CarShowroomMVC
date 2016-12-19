@@ -61,7 +61,7 @@ public class ClientTableModel extends AbstractTableModel
     {
         switch (column)
         {
-            default: return true;
+            default: return false;
         }
     }
      
