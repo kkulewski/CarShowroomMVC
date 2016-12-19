@@ -53,12 +53,6 @@ public class ClientListView extends JPanel
 		this.clientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.add(clientList, c);
 		
-		/*
-		// GET SELECTED CLIENT
-		Client cl = clientTableModel.getClient(clientList.getSelectedRow());
-		System.out.println(cl.getId());
-		*/
-		
 	}
 	
 	public void ClientEditListener(ActionListener clientEditListener) 

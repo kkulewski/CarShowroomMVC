@@ -48,8 +48,7 @@ public class MainController
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
-		{	
-			//mainView.ActionCommited();	
+		{		
 			mainView.setContentPane(clientAddView);
 			mainView.invalidate();
 			mainView.validate();
@@ -60,9 +59,7 @@ public class MainController
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
-		{	
-			//mainView.ActionCommited();	
-			
+		{
 			//TODO: make TableModel update itself
 			//HACK - update data in TableModel (flush and load from db)
 			clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
@@ -79,7 +76,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent arg0) 
 		{	
-			//mainView.ActionCommited();	
 			mainView.setContentPane(clientSearchView);
 			mainView.invalidate();
 			mainView.validate();

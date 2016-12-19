@@ -52,8 +52,6 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	
-	//STUB - GET DATA FROM DB, PUT INTO ARRAYLIST AND RETURN
 	public ArrayList<Client> listClient()
 	{
 		ArrayList<Client> clientList = new ArrayList<Client>();
