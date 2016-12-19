@@ -32,15 +32,14 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	public boolean removeClient(int rowToDeleteId)
+	public boolean deleteClient(int rowToDeleteId)
 	{
 		try
 		{
-			String query = "DELETE FROM client WHERE ? = ?;";
+			String query = "DELETE FROM client WHERE id_client = ?;";
 			
 			PreparedStatement deleteStatement = conn.prepareStatement(query);
-			deleteStatement.setString(1, "id_client");
-			deleteStatement.setInt(2, rowToDeleteId);
+			deleteStatement.setInt(1, rowToDeleteId);
 			
 			deleteStatement.execute();
 			deleteStatement.close();
