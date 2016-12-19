@@ -21,6 +21,9 @@ public class ClientController
 		this.clientAddView = clientAddView;
 		this.clientListView = clientListView;
 		this.clientAddSubmitListener = new ClientAddSubmitListener();
+		
+		this.clientListView.ClientEditListener(new ClientEditListener());
+		this.clientListView.ClientRemoveListener(new ClientRemoveListener());
 	}
 	
 	public void InsertClient(String name, String surname, long pesel, String city, String street)
@@ -59,7 +62,7 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
-			
+			System.out.println("EDIT");
 		}
 	}
 	
@@ -68,6 +71,7 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
+			System.out.println("REMOVE");
 			int selectedRow = clientListView.clientList.getSelectedRow();
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
 			

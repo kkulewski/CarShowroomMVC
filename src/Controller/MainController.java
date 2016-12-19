@@ -62,7 +62,7 @@ public class MainController
 			//mainView.ActionCommited();	
 			
 			//HACK - provide fresh model to make sure data is recent and correct
-			clientListView = new ClientListView(new ClientTableModel(clientModel.listClient()));
+			//clientListView = new ClientListView(new ClientTableModel(clientModel.listClient()));
 			
 			mainView.setContentPane(clientListView);
 			mainView.invalidate();
