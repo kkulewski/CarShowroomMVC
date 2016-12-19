@@ -5,17 +5,20 @@ import java.awt.event.ActionListener;
 
 import Model.ClientModel;
 import View.ClientAddView;
+import View.ClientListView;
 
 public class ClientController 
 {
 	ClientModel clientModel = new ClientModel();
 	ClientAddView clientAddView;
+	ClientListView clientListView;
 	
 	ClientAddSubmitListener clientAddSubmitListener;
 	
-	public ClientController(ClientAddView clientAddView)
+	public ClientController(ClientAddView clientAddView, ClientListView clientListView)
 	{
 		this.clientAddView = clientAddView;
+		this.clientListView = clientListView;
 		this.clientAddSubmitListener = new ClientAddSubmitListener();
 	}
 	

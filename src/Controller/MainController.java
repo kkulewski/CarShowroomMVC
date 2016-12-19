@@ -32,7 +32,7 @@ public class MainController
 		this.clientListView = new ClientListView(new ClientTableModel(clientModel.listClient()));
 		this.clientSearchView = new ClientSearchView();
 		
-		this.clientController = new ClientController(clientAddView);
+		this.clientController = new ClientController(clientAddView, clientListView);
 		clientAddView.ClientAddSubmitListener(clientController.clientAddSubmitListener);
 		
 		mainView.ClientAddListener(new ClientAddListener());
