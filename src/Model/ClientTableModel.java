@@ -27,6 +27,11 @@ public class ClientTableModel extends AbstractTableModel
     {
         this.clients = clients;
     }
+    
+    public void ReloadClientTable(List<Client> clients)
+    {
+    	this.clients = clients;
+    }
  
     @Override
     public int getColumnCount()

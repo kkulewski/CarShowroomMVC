@@ -21,6 +21,7 @@ public class MainController
 	private ClientSearchView clientSearchView;
 	
 	private ClientModel clientModel;
+	private ClientTableModel clientTableModel;
 
 	
 	public MainController(MainView mainView)
@@ -29,7 +30,8 @@ public class MainController
 		
 		this.clientModel = new ClientModel();
 		this.clientAddView = new ClientAddView();
-		this.clientListView = new ClientListView(new ClientTableModel(clientModel.listClient()));
+		this.clientTableModel = new ClientTableModel(clientModel.listClient());
+		this.clientListView = new ClientListView(clientTableModel);
 		this.clientSearchView = new ClientSearchView();
 		
 		this.clientController = new ClientController(clientAddView, clientListView);
@@ -62,13 +64,8 @@ public class MainController
 			//mainView.ActionCommited();	
 			
 			//TODO: make TableModel update itself
-			//HACK - provide fresh controller+model to make sure data is recent and correct and ActionListeners work
-			//create new model for updated data
-			ClientTableModel clientTableModel = new ClientTableModel(clientModel.listClient());
-			//create new view based on new model
-			clientListView = new ClientListView(clientTableModel);
-			//after creation of new ClientListView, clientController holds outdated view, needs an update
-			clientController = new ClientController(clientAddView, clientListView);
+			//HACK - update data in TableModel (flush and load from db)
+			clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
 			//HACK
 			
 			mainView.setContentPane(clientListView);
