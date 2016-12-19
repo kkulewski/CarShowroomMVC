@@ -32,6 +32,27 @@ public class ClientModel extends Database
 		return true;
 	}
 	
+	public boolean removeClient(int rowToDeleteId)
+	{
+		try
+		{
+			String query = "DELETE FROM client WHERE ? = ?;";
+			
+			PreparedStatement deleteStatement = conn.prepareStatement(query);
+			deleteStatement.setString(1, "id_client");
+			deleteStatement.setInt(2, rowToDeleteId);
+			
+			deleteStatement.execute();
+			deleteStatement.close();
+		}
+		catch(SQLException e)
+		{
+			System.err.println("Cannot delete row");
+			return false;
+		}
+		return true;
+	}
+	
 	
 	//STUB - GET DATA FROM DB, PUT INTO ARRAYLIST AND RETURN
 	public ArrayList<Client> listClient()
