@@ -61,8 +61,15 @@ public class MainController
 		{	
 			//mainView.ActionCommited();	
 			
-			//HACK - provide fresh model to make sure data is recent and correct
-			//clientListView = new ClientListView(new ClientTableModel(clientModel.listClient()));
+			//TODO: make TableModel update itself
+			//HACK - provide fresh controller+model to make sure data is recent and correct and ActionListeners work
+			//create new model for updated data
+			ClientTableModel clientTableModel = new ClientTableModel(clientModel.listClient());
+			//create new view based on new model
+			clientListView = new ClientListView(clientTableModel);
+			//after creation of new ClientListView, clientController holds outdated view, needs an update
+			clientController = new ClientController(clientAddView, clientListView);
+			//HACK
 			
 			mainView.setContentPane(clientListView);
 			mainView.invalidate();
