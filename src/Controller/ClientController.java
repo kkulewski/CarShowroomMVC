@@ -31,6 +31,11 @@ public class ClientController
 		clientModel.insertClient(name, surname, pesel, city, street);
 	}
 	
+	public void DeleteClient(int id)
+	{
+		clientModel.removeClient(id);
+	}
+	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
 	class ClientAddSubmitListener implements ActionListener
 	{
@@ -74,8 +79,11 @@ public class ClientController
 			System.out.println("REMOVE");
 			int selectedRow = clientListView.clientList.getSelectedRow();
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
+			int selectedClientId = selectedClient.getId();
 			
-			System.out.println("Removing "+selectedClient.getId()+" from db");
+			//TODO: add confirmation popup
+			
+			DeleteClient(selectedClientId);
 		}
 	}
 }
