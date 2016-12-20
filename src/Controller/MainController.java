@@ -7,6 +7,7 @@ import Model.ClientTableModel;
 import java.awt.event.ActionEvent;
 
 import View.ClientAddView;
+import View.ClientEditView;
 import View.ClientListView;
 import View.ClientSearchView;
 import View.MainView;
@@ -18,6 +19,7 @@ public class MainController
 	private ClientController clientController;
 	private ClientAddView clientAddView;
 	private ClientListView clientListView;
+	private ClientEditView clientEditView;
 	private ClientSearchView clientSearchView;
 	
 	private ClientModel clientModel;
@@ -32,9 +34,10 @@ public class MainController
 		this.clientAddView = new ClientAddView();
 		this.clientTableModel = new ClientTableModel(clientModel.listClient());
 		this.clientListView = new ClientListView(clientTableModel);
+		this.clientEditView = new ClientEditView();
 		this.clientSearchView = new ClientSearchView();
 		
-		this.clientController = new ClientController(clientAddView, clientListView);
+		this.clientController = new ClientController(clientAddView, clientListView, clientEditView);
 		clientAddView.ClientAddSubmitListener(clientController.clientAddSubmitListener);
 		
 		mainView.ClientAddListener(new ClientAddListener());
