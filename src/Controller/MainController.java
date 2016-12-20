@@ -22,7 +22,7 @@ public class MainController
 	private ClientEditView clientEditView;
 	private ClientSearchView clientSearchView;
 	
-	private ClientModel clientModel;
+	public ClientModel clientModel;
 	private ClientTableModel clientTableModel;
 
 	
