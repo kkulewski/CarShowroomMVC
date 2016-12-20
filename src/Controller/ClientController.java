@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import Model.Client;
 import Model.ClientModel;
 import View.ClientAddView;
+import View.ClientEditView;
 import View.ClientListView;
 
 public class ClientController 
@@ -13,13 +14,15 @@ public class ClientController
 	ClientModel clientModel = new ClientModel();
 	ClientAddView clientAddView;
 	ClientListView clientListView;
+	ClientEditView clientEditView;
 	
 	ClientAddSubmitListener clientAddSubmitListener;
 	
-	public ClientController(ClientAddView clientAddView, ClientListView clientListView)
+	public ClientController(ClientAddView clientAddView, ClientListView clientListView, ClientEditView clientEditView)
 	{
 		this.clientAddView = clientAddView;
 		this.clientListView = clientListView;
+		this.clientEditView = clientEditView;
 		this.clientAddSubmitListener = new ClientAddSubmitListener();
 		
 		this.clientListView.ClientEditListener(new ClientEditListener());
@@ -67,7 +70,51 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
-			System.out.println("EDIT");
+			int selectedRow = clientListView.clientList.getSelectedRow();
+			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
+			
+			int clientId = selectedClient.getId();
+			
+			// FILL POPUP FIELDS WITH SELECTED ITEM DATA
+			String clientName = selectedClient.getName();
+			clientEditView.nameField.setText(clientName);
+			
+			String clientSurname = selectedClient.getSurname();
+			clientEditView.surnameField.setText(clientSurname);
+			
+			String clientPesel = String.valueOf(selectedClient.getPesel());
+			clientEditView.peselField.setText(clientPesel);
+			
+			String clientCity = selectedClient.getCity();
+			clientEditView.cityField.setText(clientCity);
+			
+			String clientStreet = selectedClient.getStreet();
+			clientEditView.streetField.setText(clientStreet);
+			
+			
+			boolean itemModified = clientEditView.DisplayPopup();
+			
+			if(itemModified == true)
+			{
+				//GET NEW DATA FROM POPUP
+				String clientNewName = selectedClient.getName();
+				String clientNewSurname = selectedClient.getSurname();
+				long clientNewPesel = Long.valueOf(selectedClient.getPesel());
+				String clientNewCity = selectedClient.getCity();
+				String clientNewStreet = selectedClient.getStreet();
+				
+				//TODO: regex check new data
+				//
+				
+				//CALL UPDATE METHOD FROM MODEL
+				//
+				
+				//reload clientTable data from DB
+				clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
+				//update view
+				clientListView.invalidate();
+				clientListView.validate();
+			}
 		}
 	}
 	
