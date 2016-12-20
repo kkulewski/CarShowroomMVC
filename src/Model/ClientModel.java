@@ -52,7 +52,7 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	public boolean editClient(int id, String name, String surname, long pesel, String city, String street)
+	public boolean updateClient(int id, String name, String surname, long pesel, String city, String street)
 	{
 		try
 		{
