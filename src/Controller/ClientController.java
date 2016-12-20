@@ -33,6 +33,7 @@ public class ClientController
 	{
 		//reload clientTable data from DB
 		clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
+		clientListView.clientList.clearSelection();
 		//update view
 		clientListView.invalidate();
 		clientListView.validate();
@@ -116,7 +117,6 @@ public class ClientController
 			{
 				//GET NEW DATA FROM POPUP
 				String clientNewName = clientEditView.name;
-				System.out.println("new name:"+clientNewName);
 				String clientNewSurname = clientEditView.surname;
 				long clientNewPesel = clientEditView.pesel;
 				String clientNewCity = clientEditView.city;
