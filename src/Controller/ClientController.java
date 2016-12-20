@@ -115,11 +115,12 @@ public class ClientController
 			if(itemModified == true)
 			{
 				//GET NEW DATA FROM POPUP
-				String clientNewName = selectedClient.getName();
-				String clientNewSurname = selectedClient.getSurname();
-				long clientNewPesel = Long.valueOf(selectedClient.getPesel());
-				String clientNewCity = selectedClient.getCity();
-				String clientNewStreet = selectedClient.getStreet();
+				String clientNewName = clientEditView.name;
+				System.out.println("new name:"+clientNewName);
+				String clientNewSurname = clientEditView.surname;
+				long clientNewPesel = clientEditView.pesel;
+				String clientNewCity = clientEditView.city;
+				String clientNewStreet = clientEditView.street;
 				
 				//TODO: regex check new data
 				
