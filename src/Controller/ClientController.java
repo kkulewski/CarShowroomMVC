@@ -39,6 +39,11 @@ public class ClientController
 		clientModel.deleteClient(id);
 	}
 	
+	public void UpdateClient(int id, String name, String surname, long pesel, String city, String street)
+	{
+		clientModel.updateClient(id, name, surname, pesel, city, street);
+	}
+	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
 	class ClientAddSubmitListener implements ActionListener
 	{
@@ -108,10 +113,8 @@ public class ClientController
 				String clientNewStreet = selectedClient.getStreet();
 				
 				//TODO: regex check new data
-				//
 				
-				//CALL UPDATE METHOD FROM MODEL
-				//
+				UpdateClient(clientId, clientNewName, clientNewSurname, clientNewPesel, clientNewCity, clientNewStreet);
 				
 				//reload clientTable data from DB
 				clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
