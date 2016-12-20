@@ -125,11 +125,7 @@ public class ClientController
 				
 				UpdateClient(clientId, clientNewName, clientNewSurname, clientNewPesel, clientNewCity, clientNewStreet);
 				
-				//reload clientTable data from DB
-				clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
-				//update view
-				clientListView.invalidate();
-				clientListView.validate();
+				RefreshView();
 			}
 		}
 	}
@@ -151,11 +147,7 @@ public class ClientController
 			
 			DeleteClient(selectedClientId);
 			
-			//reload clientTable data from DB
-			clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
-			//update view
-			clientListView.invalidate();
-			clientListView.validate();
+			RefreshView();
 		}
 	}
 }
