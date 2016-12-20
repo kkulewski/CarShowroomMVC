@@ -52,6 +52,31 @@ public class ClientModel extends Database
 		return true;
 	}
 	
+	public boolean editClient(int id, String name, String surname, long pesel, String city, String street)
+	{
+		try
+		{
+			String query = "UPDATE client SET name = ?, surname = ?, pesel = ?, city = ?, street = ? WHERE id_client = ?;";
+			
+			PreparedStatement updateStatement = conn.prepareStatement(query);
+			updateStatement.setString(1, name);
+			updateStatement.setString(2, surname);
+			updateStatement.setLong(3, pesel);
+			updateStatement.setString(4, city);
+			updateStatement.setString(5, street);
+			updateStatement.setInt(6, id);
+			
+			updateStatement.execute();
+			updateStatement.close();
+		}
+		catch(SQLException e)
+		{
+			System.err.println("Cannot update row");
+			return false;
+		}
+		return true;
+	}
+	
 	public ArrayList<Client> listClient()
 	{
 		ArrayList<Client> clientList = new ArrayList<Client>();
