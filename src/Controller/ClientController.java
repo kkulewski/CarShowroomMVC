@@ -29,6 +29,15 @@ public class ClientController
 		this.clientListView.ClientRemoveListener(new ClientRemoveListener());
 	}
 	
+	public void RefreshView()
+	{
+		//reload clientTable data from DB
+		clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
+		//update view
+		clientListView.invalidate();
+		clientListView.validate();
+	}
+	
 	public void InsertClient(String name, String surname, long pesel, String city, String street)
 	{
 		clientModel.insertClient(name, surname, pesel, city, street);
