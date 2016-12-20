@@ -71,6 +71,10 @@ public class ClientController
 		public void actionPerformed(ActionEvent arg0)
 		{
 			int selectedRow = clientListView.clientList.getSelectedRow();
+			//RETURN IF NO ROW SELECTED
+			if(selectedRow == -1)
+				return;
+			
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
 			
 			int clientId = selectedClient.getId();
