@@ -163,11 +163,17 @@ public class ClientController
 		public void actionPerformed(ActionEvent arg0)
 		{
 			Long pesel = Long.parseLong(clientSearchView.peselField.getText());
-			Client foundClient = clientModel.findClient(pesel);
-			System.out.println("Searching for client with PESEL == "+pesel);
 			
-			int foundClientId = foundClient.getId();
-			System.out.println("Found: "+foundClient.getName()+" "+foundClient.getSurname()+" ID:"+foundClientId);
+			Client foundClient = clientModel.findClient(pesel);
+			if(foundClient != null)
+			{
+				clientSearchView.DisplayResultPopup(foundClient);
+			}
+			else
+			{
+				clientSearchView.DisplayNoResultPopup();
+			}
+			
 		}
 	}
 }

@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Model.Client;
+
 public class ClientSearchView extends JPanel
 {
 	
@@ -53,6 +55,16 @@ public class ClientSearchView extends JPanel
 		c.gridwidth = 2;
 		c.insets = new Insets(10,80,0,80);
 		this.add(submitButton, c);
+	}
+	
+	public void DisplayNoResultPopup()
+	{
+		System.out.println("No result found");
+	}
+	
+	public void DisplayResultPopup(Client foundClient)
+	{
+		System.out.println("ID: "+foundClient.getId()+" Name: "+foundClient.getName()+" Surname: "+foundClient.getSurname());
 	}
 	
 	public void ClientSearchSubmitListener(ActionListener clientSearchSubmitListener) 
