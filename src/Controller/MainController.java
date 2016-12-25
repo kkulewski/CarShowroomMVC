@@ -37,8 +37,9 @@ public class MainController
 		this.clientEditView = new ClientEditView();
 		this.clientSearchView = new ClientSearchView();
 		
-		this.clientController = new ClientController(clientAddView, clientListView, clientEditView);
+		this.clientController = new ClientController(clientAddView, clientListView, clientEditView, clientSearchView);
 		clientAddView.ClientAddSubmitListener(clientController.clientAddSubmitListener);
+		clientSearchView.ClientSearchSubmitListener(clientController.clientSearchSubmitListener);
 		
 		mainView.ClientAddListener(new ClientAddListener());
 		mainView.ClientListListener(new ClientListListener());

@@ -8,6 +8,7 @@ import Model.ClientModel;
 import View.ClientAddView;
 import View.ClientEditView;
 import View.ClientListView;
+import View.ClientSearchView;
 
 public class ClientController 
 {
@@ -15,15 +16,19 @@ public class ClientController
 	ClientAddView clientAddView;
 	ClientListView clientListView;
 	ClientEditView clientEditView;
+	ClientSearchView clientSearchView;
 	
 	ClientAddSubmitListener clientAddSubmitListener;
+	ClientSearchSubmitListener clientSearchSubmitListener;
 	
-	public ClientController(ClientAddView clientAddView, ClientListView clientListView, ClientEditView clientEditView)
+	public ClientController(ClientAddView clientAddView, ClientListView clientListView, ClientEditView clientEditView, ClientSearchView clientSearchView)
 	{
 		this.clientAddView = clientAddView;
 		this.clientListView = clientListView;
 		this.clientEditView = clientEditView;
+		this.clientSearchView = clientSearchView;
 		this.clientAddSubmitListener = new ClientAddSubmitListener();
+		this.clientSearchSubmitListener = new ClientSearchSubmitListener();
 		
 		this.clientListView.ClientEditListener(new ClientEditListener());
 		this.clientListView.ClientRemoveListener(new ClientRemoveListener());
@@ -149,6 +154,15 @@ public class ClientController
 			DeleteClient(selectedClientId);
 			
 			RefreshView();
+		}
+	}
+	
+	class ClientSearchSubmitListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			System.out.println("Searching for client with PESEL == ");
 		}
 	}
 }
