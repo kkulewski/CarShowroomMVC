@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import Model.Client;
 
 public class ClientModel extends Database 
 {
@@ -105,6 +106,41 @@ public class ClientModel extends Database
 	        return null;
 	    }
 	    return clientList;
+	}
+	
+	public Client findClient(int id_client)
+	{
+		try
+		{
+			String selectQuery = "SELECT * FROM client WHERE id_client = ?;";
+			
+			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+			selectStatement.setInt(1, id_client);
+			
+			ResultSet result = selectStatement.executeQuery();
+			
+			int id;
+	        long pesel;
+	        String name, surname, city, street;
+	        Client foundClient = null;
+	        while(result.next()) 
+	        {
+	            id = result.getInt("id_client");
+	            name = result.getString("name");
+	            surname = result.getString("surname");
+	            pesel = result.getLong("pesel");
+	            city = result.getString("city");
+	            street = result.getString("street");
+	            foundClient = new Client(id, name, surname, pesel, city, street);
+	            
+	        }
+	        return foundClient;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }
