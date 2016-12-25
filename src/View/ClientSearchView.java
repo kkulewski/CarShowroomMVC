@@ -27,7 +27,7 @@ public class ClientSearchView extends JPanel
 	public ClientSearchView()
 	{
 		this.setVisible(true);
-		Color backgroundColor = new Color(225, 255, 205);
+		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
 		this.setLayout(new GridLayout(0, 1));
 		
