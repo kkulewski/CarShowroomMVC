@@ -49,9 +49,56 @@ public class Database
         		+ "street varchar(70)"
         		+ ")";
         
+        String createPositionQuery = ""
+        		+ "CREATE TABLE IF NOT EXISTS position"
+        		+ "( "
+        		+ "id_position INTEGER PRIMARY KEY AUTOINCREMENT, "
+        		+ "title varchar(20), "
+        		+ "salary REAL"
+        		+ ")";
+        
+        String createWorkerQuery = ""
+        		+ "CREATE TABLE IF NOT EXISTS worker"
+        		+ "( "
+        		+ "id_worker INTEGER PRIMARY KEY AUTOINCREMENT, "
+        		+ "name varchar(20), "
+        		+ "surname varchar(50), "
+        		+ "pesel bigint, "
+        		+ "city varchar(30), "
+        		+ "street varchar(70), "
+        		+ "id_position INTEGER, "
+        		+ "FOREIGN KEY(id_position) REFERENCES position(id_position)"
+        		+ ")";
+        
+        String createCarQuery = ""
+        		+ "CREATE TABLE IF NOT EXISTS car"
+        		+ "( "
+        		+ "id_car INTEGER PRIMARY KEY AUTOINCREMENT, "
+        		+ "brand varchar(20), "
+        		+ "model varchar(20), "
+        		+ "price REAL"
+        		+ ")";
+        
+        String createPurchaseQuery = ""
+        		+ "CREATE TABLE IF NOT EXISTS purchase"
+        		+ "( "
+        		+ "id_purchase INTEGER PRIMARY KEY AUTOINCREMENT, "
+        		+ "id_client INTEGER, "
+        		+ "id_worker INTEGER, "
+        		+ "id_car INTEGER, "
+        		+ "transaction_date DATE, "
+        		+ "FOREIGN KEY(id_client) REFERENCES client(id_client), "
+        		+ "FOREIGN KEY(id_worker) REFERENCES worker(id_worker), "
+        		+ "FOREIGN KEY(id_car) REFERENCES car(id_car)"
+        		+ ")";
+        
         try 
         {
             stat.execute(createClientQuery);
+            stat.execute(createPositionQuery);
+            stat.execute(createWorkerQuery);
+            stat.execute(createCarQuery);
+            stat.execute(createPurchaseQuery);
         }
         catch (SQLException e) 
         {
