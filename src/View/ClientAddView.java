@@ -1,9 +1,7 @@
 package View;
 
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -39,88 +37,37 @@ public class ClientAddView extends JPanel
 	public ClientAddView()
 	{
 		this.setVisible(true);
-		Color backgroundColor = new Color(225, 255, 205);
+		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
+		this.setLayout(new GridLayout(0,1));
 		
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		
-		
-		c.insets = new Insets(10,40,0,40);
 		//NAME LABEL
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.3;
-		c.gridx = 0;
-		c.gridy = 0;
-		this.add(nameLabel, c);
+		this.add(nameLabel);
 		//NAME FIELD
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.7;
-		c.gridx = 1;
-		c.gridy = 0;
-		this.add(nameField, c);
+		this.add(nameField);
 
 		//SURNAME LABEL
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.3;
-		c.gridx = 0;
-		c.gridy = 1;
-		this.add(surnameLabel, c);
+		this.add(surnameLabel);
 		//SURNAME FIELD
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.7;
-		c.gridx = 1;
-		c.gridy = 1;
-		this.add(surnameField, c);
+		this.add(surnameField);
 		
 		//PESEL LABEL
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.3;
-		c.gridx = 0;
-		c.gridy = 2;
-		this.add(peselLabel, c);
+		this.add(peselLabel);
 		//PESEL FIELD
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.7;
-		c.gridx = 1;
-		c.gridy = 2;
-		this.add(peselField, c);
+		this.add(peselField);
 		
 		//CITY LABEL
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.3;
-		c.gridx = 0;
-		c.gridy = 3;
-		this.add(cityLabel, c);
+		this.add(cityLabel);
 		//CITY FIELD
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.7;
-		c.gridx = 1;
-		c.gridy = 3;
-		this.add(cityField, c);
+		this.add(cityField);
 		
 		//STREET LABEL
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.3;
-		c.gridx = 0;
-		c.gridy = 4;
-		this.add(streetLabel, c);
+		this.add(streetLabel);
 		//STREET FIELD
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.7;
-		c.gridx = 1;
-		c.gridy = 4;
-		this.add(streetField, c);
+		this.add(streetField);
 
 		//SUBMIT
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 1.0;
-		c.gridx = 0;
-		c.gridy = 5;
-		c.weighty = 0.5;
-		c.gridwidth = 2;
-		c.insets = new Insets(10,80,0,80);
-		this.add(submitButton, c);
+		this.add(submitButton);
 	}
 	
 	public void ClientAddSubmitListener(ActionListener clientAddSubmitListener) 
