@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ public class ClientSearchView extends JPanel
 	JLabel peselLabel = new JLabel("PESEL:");
 	
 	//SEARCH BUTTON
-	public JButton searchButton = new JButton("Search");
+	public JButton submitButton = new JButton("Search");
 	
 	public ClientSearchView()
 	{
@@ -51,6 +52,11 @@ public class ClientSearchView extends JPanel
 		c.weighty = 0.5;
 		c.gridwidth = 2;
 		c.insets = new Insets(10,80,0,80);
-		this.add(searchButton, c);
+		this.add(submitButton, c);
+	}
+	
+	public void ClientSearchSubmitListener(ActionListener clientSearchSubmitListener) 
+	{
+		submitButton.addActionListener(clientSearchSubmitListener);
 	}
 }
