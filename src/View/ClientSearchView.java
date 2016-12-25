@@ -1,10 +1,7 @@
 package View;
 
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -30,35 +27,17 @@ public class ClientSearchView extends JPanel
 	public ClientSearchView()
 	{
 		this.setVisible(true);
-		Color backgroundColor = new Color(200, 0, 200);
+		Color backgroundColor = new Color(225, 255, 205);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		this.setLayout(new GridLayout(0, 1));
 		
-		
-		c.insets = new Insets(10,40,0,40);
 		//PESEL LABEL
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.3;
-		c.gridx = 0;
-		c.gridy = 0;
-		this.add(peselLabel, c);
+		this.add(peselLabel);
 		//PESEL FIELD
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.7;
-		c.gridx = 1;
-		c.gridy = 0;
-		this.add(peselField, c);
+		this.add(peselField);
 		
 		//SUBMIT
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 1.0;
-		c.gridx = 0;
-		c.gridy = 5;
-		c.weighty = 0.5;
-		c.gridwidth = 2;
-		c.insets = new Insets(10,80,0,80);
-		this.add(submitButton, c);
+		this.add(submitButton);
 	}
 	
 	public void DisplayNoResultPopup()
