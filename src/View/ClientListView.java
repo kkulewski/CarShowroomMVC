@@ -3,6 +3,7 @@ package View;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -26,32 +27,18 @@ public class ClientListView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		this.setLayout(new GridLayout(0,1));
 		
 		//EDIT BUTTON
-		//c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 0;
-		c.gridy = 0;
-		this.add(editButton, c);
+		this.add(editButton);
 		//REMOVE BUTTON
-		//c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridx = 2;
-		c.gridy = 0;
-		this.add(removeButton, c);
+		this.add(removeButton);
 		
 		//TABLE
-		//c.fill = GridBagConstraints.CENTER;
-		c.weightx = 1;
-		c.gridx = 1;
-		c.gridy = 1;
-		
 		this.clientTableModel = clientTableModel;
 		this.clientList = new JTable(this.clientTableModel);
 		this.clientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.add(clientList, c);
+		this.add(clientList);
 		
 	}
 	
