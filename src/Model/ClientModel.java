@@ -108,14 +108,14 @@ public class ClientModel extends Database
 	    return clientList;
 	}
 	
-	public Client findClient(int id_client)
+	public Client findClient(long searchedPesel)
 	{
 		try
 		{
-			String selectQuery = "SELECT * FROM client WHERE id_client = ?;";
+			String selectQuery = "SELECT * FROM client WHERE pesel = ?;";
 			
 			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
-			selectStatement.setInt(1, id_client);
+			selectStatement.setLong(1, searchedPesel);
 			
 			ResultSet result = selectStatement.executeQuery();
 			
