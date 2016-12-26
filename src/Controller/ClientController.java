@@ -54,9 +54,9 @@ public class ClientController
 		clientModel.insertClient(name, surname, pesel, city, street);
 	}
 	
-	public void DeleteClient(int id)
+	public void DeleteClient(Client client)
 	{
-		clientModel.deleteClient(id);
+		clientModel.deleteClient(client);
 	}
 	
 	public void UpdateClient(int id, String name, String surname, long pesel, String city, String street)
@@ -248,12 +248,11 @@ public class ClientController
 				return;
 			
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
-			int selectedClientId = selectedClient.getId();
 			
 			//CONFIRMATION POPUP
 			if(clientListView.DisplayRemoveConfirmationPopup() == true)
 			{
-				DeleteClient(selectedClientId);
+				DeleteClient(selectedClient);
 			}
 			
 			RefreshView();
