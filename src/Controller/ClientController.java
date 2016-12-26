@@ -262,9 +262,11 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
-			Long pesel = Long.parseLong(clientSearchView.peselField.getText());
+			//TODO: dynamic get rowName
+			String rowName = "pesel";
+			String rowValue = clientSearchView.peselField.getText();
 			
-			Client foundClient = clientModel.findClient(pesel);
+			Client foundClient = clientModel.findClient(rowName, rowValue);
 			if(foundClient != null)
 			{
 				clientSearchView.DisplayResultPopup(foundClient);

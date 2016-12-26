@@ -122,17 +122,35 @@ public class ClientModel extends Database
 	    return clientList;
 	}
 	
-	public Client findClient(long searchedPesel)
+	public Client findClient(String rowName, String rowValue)
 	{
 		try
 		{
-			String selectQuery = "SELECT * FROM client WHERE pesel = ?;";
+			String selectQuery = "SELECT * FROM client WHERE "+rowName+" = ?;";
 			
 			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
-			selectStatement.setLong(1, searchedPesel);
+			//row type is based on rowName
+			switch(rowName)
+			{
+			case "name":
+				selectStatement.setString(1, rowValue);
+				break;
+			case "surname":
+				selectStatement.setString(1, rowValue);
+				break;
+			case "pesel":
+				selectStatement.setLong(1, Long.parseLong(rowValue));
+				break;
+			case "city":
+				selectStatement.setString(1, rowValue);
+				break;
+			case "street":
+				selectStatement.setString(1, rowValue);
+				break;
+			}
 			
 			ResultSet result = selectStatement.executeQuery();
-			
+
 			int id;
 	        long pesel;
 	        String name, surname, city, street;
