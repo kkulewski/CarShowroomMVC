@@ -154,6 +154,9 @@ public class ClientModel extends Database
 			case "street":
 				selectStatement.setString(1, rowValue);
 				break;
+			default:
+				selectStatement.setString(1, "name");
+				break;
 			}
 			
 			ResultSet result = selectStatement.executeQuery();

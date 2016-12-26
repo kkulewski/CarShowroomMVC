@@ -44,16 +44,10 @@ public class ClientSearchView extends JPanel
 	    searchRowLabel = new JLabel("Select column to search:");
 	    dataPanel.add(searchRowLabel);
 		
-		DefaultComboBoxModel<String> searchRowName = new DefaultComboBoxModel<String>();
-	    searchRowName.addElement("name");
-	    searchRowName.addElement("surname");
-	    searchRowName.addElement("pesel");
-	    searchRowName.addElement("city");
-	    searchRowName.addElement("street");
-	    searchRowCombo = new JComboBox<String>(searchRowName);    
+	    String[] rowNames = new String[]{"name", "surname", "pesel", "city", "street" };
+	    searchRowCombo = new JComboBox<String>(rowNames);    
 	    searchRowCombo.setSelectedIndex(0);
 	    JScrollPane searchRowScrollPane = new JScrollPane(searchRowCombo);    
-	    
 		dataPanel.add(searchRowScrollPane);
 		
 		searchValueLabel = new JLabel("Set searched value:");

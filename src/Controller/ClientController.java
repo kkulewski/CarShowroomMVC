@@ -262,7 +262,6 @@ public class ClientController
 		@Override
 		public void actionPerformed(ActionEvent arg0)
 		{
-			//TODO: dynamic get rowName
 			String rowName = (String) clientSearchView.searchRowCombo.getSelectedItem();
 			String rowValue = clientSearchView.searchValueField.getText();
 			
