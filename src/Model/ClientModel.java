@@ -8,6 +8,7 @@ import Model.Client;
 
 public class ClientModel extends Database 
 {
+	private String tableName = "client";
 	
 	public boolean insertClient(Client client)
 	{
@@ -19,7 +20,7 @@ public class ClientModel extends Database
 		
 		try
 		{
-			String query = "INSERT INTO client VALUES (NULL, ?, ?, ?, ?, ?);";
+			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?, ?, ?, ?);";
 			
 			PreparedStatement insertStatement = conn.prepareStatement(query);
 			insertStatement.setString(1, name);
@@ -33,7 +34,7 @@ public class ClientModel extends Database
 		}
 		catch(SQLException e)
 		{
-			System.err.println("Cannot insert new client");
+			System.err.println("Cannot insert new "+tableName+".");
 			return false;
 		}
 		return true;
@@ -43,7 +44,7 @@ public class ClientModel extends Database
 	{
 		try
 		{
-			String query = "DELETE FROM client WHERE id_client = ?;";
+			String query = "DELETE FROM "+tableName+" WHERE id_"+tableName+" = ?;";
 			
 			PreparedStatement deleteStatement = conn.prepareStatement(query);
 			int clientId = client.getId();
@@ -54,7 +55,7 @@ public class ClientModel extends Database
 		}
 		catch(SQLException e)
 		{
-			System.err.println("Cannot delete row");
+			System.err.println("Cannot delete row from "+tableName+".");
 			return false;
 		}
 		return true;
@@ -71,7 +72,7 @@ public class ClientModel extends Database
 		
 		try
 		{
-			String query = "UPDATE client SET name = ?, surname = ?, pesel = ?, city = ?, street = ? WHERE id_client = ?;";
+			String query = "UPDATE "+tableName+" SET name = ?, surname = ?, pesel = ?, city = ?, street = ? WHERE id_"+tableName+" = ?;";
 			
 			PreparedStatement updateStatement = conn.prepareStatement(query);
 			updateStatement.setString(1, name);
@@ -86,7 +87,7 @@ public class ClientModel extends Database
 		}
 		catch(SQLException e)
 		{
-			System.err.println("Cannot update row");
+			System.err.println("Cannot update row in "+tableName+".");
 			return false;
 		}
 		return true;
@@ -98,7 +99,7 @@ public class ClientModel extends Database
 		
 	    try 
 	    {
-	        ResultSet result = stat.executeQuery("SELECT * FROM client");
+	        ResultSet result = stat.executeQuery("SELECT * FROM "+tableName+";");
 	        int id;
 	        long pesel;
 	        String name, surname, city, street;
@@ -126,7 +127,7 @@ public class ClientModel extends Database
 	{
 		try
 		{
-			String selectQuery = "SELECT * FROM client WHERE "+rowName+" = ?;";
+			String selectQuery = "SELECT * FROM "+tableName+" WHERE "+rowName+" = ?;";
 			
 			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
 			//row type is based on rowName
