@@ -150,9 +150,11 @@ public class ClientController
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
 			int selectedClientId = selectedClient.getId();
 			
-			//TODO: add confirmation popup
-			
-			DeleteClient(selectedClientId);
+			//CONFIRMATION POPUP
+			if(clientListView.DisplayRemoveConfirmationPopup() == true)
+			{
+				DeleteClient(selectedClientId);
+			}
 			
 			RefreshView();
 		}

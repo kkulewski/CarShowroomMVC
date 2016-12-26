@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -52,6 +54,19 @@ public class ClientListView extends JPanel
 		buttonPanel.add(removeButton);
 		this.add(buttonPanel);
 		
+	}
+	
+	public boolean DisplayRemoveConfirmationPopup()
+	{
+		JPanel confirmationPanel = new JPanel();
+		JLabel confirmationText = new JLabel("Do you really want to delete selected row?");
+		confirmationPanel.add(confirmationText);
+        int option = JOptionPane.showConfirmDialog(null, confirmationPanel, "Client removal", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if(option == 0)
+        {
+        	return true;
+        }
+        return false;
 	}
 	
 	public void ClientEditListener(ActionListener clientEditListener) 
