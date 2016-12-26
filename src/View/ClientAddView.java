@@ -3,6 +3,7 @@ package View;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,23 +16,18 @@ public class ClientAddView extends JPanel
 	//NAME
 	public JTextField nameField = new JTextField(20);
 	JLabel nameLabel = new JLabel("Name:");
-	
 	//SURNAME
 	public JTextField surnameField = new JTextField(20);
 	JLabel surnameLabel = new JLabel("Surname:");
-	
 	//PESEL
 	public JTextField peselField = new JTextField(20);
 	JLabel peselLabel = new JLabel("PESEL:");
-	
 	//CITY
 	public JTextField cityField = new JTextField(20);
 	JLabel cityLabel = new JLabel("City:");
-	
 	//STREET
 	public JTextField streetField = new JTextField(20);
 	JLabel streetLabel = new JLabel("Street:");
-	
 	//SUBMIT BUTTON
 	public JButton submitButton = new JButton("Add");
 	
@@ -81,14 +77,17 @@ public class ClientAddView extends JPanel
 		JOptionPane.showConfirmDialog(null, panel, "Client added", JOptionPane.PLAIN_MESSAGE);
 	}
 	
-	public void DisplayErrorPopup(String errorMessage)
+	public void DisplayErrorPopup(List<String> errorMessage)
 	{
 		JPanel panel = new JPanel(new GridLayout(0, 1));
 	    
 		JLabel text = new JLabel("Error: ");
-		JLabel error = new JLabel(errorMessage);
 		panel.add(text);
-		panel.add(error);
+		for(String s : errorMessage)
+		{
+			panel.add(new JLabel(s));
+		}
+
 		
 		JOptionPane.showConfirmDialog(null, panel, "Error", JOptionPane.PLAIN_MESSAGE);	
 	}

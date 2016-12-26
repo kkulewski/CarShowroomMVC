@@ -1,7 +1,9 @@
 package Controller;
 
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -104,16 +106,16 @@ public class ClientController
 			boolean cityMatches = cityMatcher.matches();
 			boolean streetMatches = streetMatcher.matches();
 			
-			//Prepare error message
-			String errorMessage = "";
-			if(nameMatches == false) errorMessage += "\nwrong name format";
-			if(surnameMatches == false) errorMessage += "\nwrong surname format";
-			if(peselMatches == false) errorMessage += "\nwrong pesel format";
-			if(cityMatches == false) errorMessage += "\nwrong city format";
-			if(streetMatches == false) errorMessage += "\nwrong street format";
+			//Prepare error message list
+			ArrayList<String> errorMessage = new ArrayList<String>();
+			if(nameMatches == false) errorMessage.add("wrong format for name");
+			if(surnameMatches == false) errorMessage.add("wrong format for surname");
+			if(peselMatches == false) errorMessage.add("wrong format for pesel");
+			if(cityMatches == false) errorMessage.add("wrong format for city");
+			if(streetMatches == false) errorMessage.add("wrong format for street");
 			
 			
-			//true is every field matches its regex, false otherwise
+			//true if every field matches its regex, false otherwise
 			boolean dataIsValid = nameMatches && surnameMatches && peselMatches && cityMatches && streetMatches;
 			
 			if(dataIsValid == true)
@@ -172,20 +174,57 @@ public class ClientController
 			if(itemModified == true)
 			{
 				//GET NEW DATA FROM POPUP
-				String clientNewName = clientEditView.name;
-				String clientNewSurname = clientEditView.surname;
-				long clientNewPesel = clientEditView.pesel;
-				String clientNewCity = clientEditView.city;
-				String clientNewStreet = clientEditView.street;
+				String name = clientEditView.nameField.getText();
+				String surname = clientEditView.surnameField.getText();
+				long pesel = 0;
+				String peselAsString = "0";
+				try
+				{
+					pesel = Long.parseLong(clientEditView.peselField.getText());
+					peselAsString = String.valueOf(pesel);
+				}
+				catch(Exception e)
+				{
+					pesel = 0;
+					peselAsString = "0";
+				}
+				String city = clientEditView.cityField.getText();
+				String street = clientEditView.streetField.getText();
 				
-				//TODO: regex check new data
-				String errorMessage = "";
+				//REGEX VALIDATION
+				Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
+				Pattern surnamePattern = Pattern.compile("[A-Z][a-z]{1,49}");
+				Pattern peselPattern = Pattern.compile("[0-9]{11,11}");
+				Pattern cityPattern = Pattern.compile("[A-Z][a-z]{1,29}");
+				Pattern streetPattern = Pattern.compile("[A-Z].{1,69}");
+				 
+				Matcher nameMatcher = namePattern.matcher(name);
+				Matcher surnameMatcher = surnamePattern.matcher(surname);
+				Matcher peselMatcher = peselPattern.matcher(peselAsString);
+				Matcher cityMatcher = cityPattern.matcher(city);
+				Matcher streetMatcher = streetPattern.matcher(street);
+				
+				boolean nameMatches = nameMatcher.matches();
+				boolean surnameMatches = surnameMatcher.matches();
+				boolean peselMatches = peselMatcher.matches();
+				boolean cityMatches = cityMatcher.matches();
+				boolean streetMatches = streetMatcher.matches();
+				
+				//Prepare error message list
+				ArrayList<String> errorMessage = new ArrayList<String>();
+				if(nameMatches == false) errorMessage.add("wrong format for name");
+				if(surnameMatches == false) errorMessage.add("wrong format for surname");
+				if(peselMatches == false) errorMessage.add("wrong format for pesel");
+				if(cityMatches == false) errorMessage.add("wrong format for city");
+				if(streetMatches == false) errorMessage.add("wrong format for street");
+				
 				//true if every field matches its regex, false otherwise
-				boolean dataIsValid = true;
+				boolean dataIsValid = nameMatches && surnameMatches && peselMatches && cityMatches && streetMatches;
+				
 				
 				if(dataIsValid == true)
 				{
-					UpdateClient(clientId, clientNewName, clientNewSurname, clientNewPesel, clientNewCity, clientNewStreet);
+					UpdateClient(clientId, name, surname, pesel, city, street);
 					clientEditView.DisplaySuccessPopup();
 				}
 				else
