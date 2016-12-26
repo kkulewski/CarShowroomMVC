@@ -70,15 +70,25 @@ public class ClientController
 		{	
 			String name = clientAddView.nameField.getText();
 			String surname = clientAddView.surnameField.getText();
-			long pesel = Long.parseLong(clientAddView.peselField.getText());
-			String peselAsString = clientAddView.peselField.getText();
+			long pesel = 0;
+			String peselAsString = "0";
+			try
+			{
+				pesel = Long.parseLong(clientAddView.peselField.getText());
+				peselAsString = clientAddView.peselField.getText();
+			}
+			catch(Exception e)
+			{
+				pesel = 0;
+				peselAsString = "0";
+			}
 			String city = clientAddView.cityField.getText();
 			String street = clientAddView.streetField.getText();
 			
 			//REGEX VALIDATION
 			Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
 			Pattern surnamePattern = Pattern.compile("[A-Z][a-z]{1,49}");
-			Pattern peselPattern = Pattern.compile("[0-9]{11}");
+			Pattern peselPattern = Pattern.compile("[0-9]{11,11}");
 			Pattern cityPattern = Pattern.compile("[A-Z][a-z]{1,29}");
 			Pattern streetPattern = Pattern.compile("[A-Z].{1,69}");
 			 

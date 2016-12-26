@@ -61,7 +61,14 @@ public class ClientEditView
         	//SAVE NEW DATA
         	name = nameField.getText();
         	surname = surnameField.getText();
-        	pesel = Long.valueOf(peselField.getText());
+        	try
+        	{
+        		pesel = Long.valueOf(peselField.getText());
+        	}
+        	catch(Exception e)
+        	{
+        		pesel = 0L;
+        	}
         	city = cityField.getText();
         	street = streetField.getText();
         	
