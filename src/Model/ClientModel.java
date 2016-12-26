@@ -113,26 +113,26 @@ public class ClientModel extends Database
 	    return clientList;
 	}
 	
-	public Client findClient(String rowName, String rowValue)
+	public Client findClient(String columnName, String value)
 	{
 		try
 		{
-			String selectQuery = "SELECT * FROM "+tableName+" WHERE "+rowName+" = ?;";
+			String selectQuery = "SELECT * FROM "+tableName+" WHERE "+columnName+" = ?;";
 			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
 			
 			//row type is based on rowName
-			switch(rowName)
+			switch(columnName)
 			{
 			case "name":
-				selectStatement.setString(1, rowValue);
+				selectStatement.setString(1, value);
 				break;
 			case "surname":
-				selectStatement.setString(1, rowValue);
+				selectStatement.setString(1, value);
 				break;
 			case "pesel":
 				try 
 				{
-					selectStatement.setLong(1, Long.parseLong(rowValue));	
+					selectStatement.setLong(1, Long.parseLong(value));	
 				}
 				catch(Exception e)
 				{
@@ -140,10 +140,10 @@ public class ClientModel extends Database
 				}
 				break;
 			case "city":
-				selectStatement.setString(1, rowValue);
+				selectStatement.setString(1, value);
 				break;
 			case "street":
-				selectStatement.setString(1, rowValue);
+				selectStatement.setString(1, value);
 				break;
 			default:
 				selectStatement.setString(1, "name");
@@ -152,10 +152,10 @@ public class ClientModel extends Database
 			
 			ResultSet result = selectStatement.executeQuery();
 
-	        Client foundClient = null;
+	        Client foundRow = null;
 	        while(result.next()) 
 	        {
-	            foundClient = new Client
+	            foundRow = new Client
 	            		(
 	            			result.getInt("id_client"), 
 	            			result.getString("name"), 
@@ -165,7 +165,7 @@ public class ClientModel extends Database
 	            			result.getString("street")
 	            		);
 	        }
-	        return foundClient;
+	        return foundRow;
 		}
 		catch(SQLException e)
 		{
