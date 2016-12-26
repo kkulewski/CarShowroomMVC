@@ -29,15 +29,23 @@ public class ClientSearchView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridLayout(0, 1));
+		this.setLayout(new GridLayout(2, 1));
 		
-		//PESEL LABEL
-		this.add(peselLabel);
-		//PESEL FIELD
-		this.add(peselField);
+		//DATA
+		JPanel dataPanel = new JPanel();
+		dataPanel.setLayout(new GridLayout(0,1));
+		//PESEL
+		dataPanel.add(peselLabel);
+		dataPanel.add(peselField);
+		this.add(dataPanel);
 		
+		//BUTTONS
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(1,1));
 		//SUBMIT
-		this.add(submitButton);
+		buttonPanel.add(submitButton);
+		this.add(buttonPanel);
+		
 	}
 	
 	public void DisplayNoResultPopup()
