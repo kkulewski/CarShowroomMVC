@@ -2,6 +2,8 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Model.Client;
 import Model.ClientModel;
@@ -69,13 +71,40 @@ public class ClientController
 			String name = clientAddView.nameField.getText();
 			String surname = clientAddView.surnameField.getText();
 			long pesel = Long.parseLong(clientAddView.peselField.getText());
+			String peselAsString = clientAddView.peselField.getText();
 			String city = clientAddView.cityField.getText();
 			String street = clientAddView.streetField.getText();
 			
-			//TODO: VALIDATION WITH REGEX
+			//REGEX VALIDATION
+			Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
+			Pattern surnamePattern = Pattern.compile("[A-Z][a-z]{1,49}");
+			Pattern peselPattern = Pattern.compile("[0-9]{11}");
+			Pattern cityPattern = Pattern.compile("[A-Z][a-z]{1,29}");
+			Pattern streetPattern = Pattern.compile("[A-Z].{1,69}");
+			 
+			Matcher nameMatcher = namePattern.matcher(name);
+			Matcher surnameMatcher = surnamePattern.matcher(surname);
+			Matcher peselMatcher = peselPattern.matcher(peselAsString);
+			Matcher cityMatcher = cityPattern.matcher(city);
+			Matcher streetMatcher = streetPattern.matcher(street);
+			
+			boolean nameMatches = nameMatcher.matches();
+			boolean surnameMatches = surnameMatcher.matches();
+			boolean peselMatches = peselMatcher.matches();
+			boolean cityMatches = cityMatcher.matches();
+			boolean streetMatches = streetMatcher.matches();
+			
+			//Prepare error message
 			String errorMessage = "";
+			if(nameMatches == false) errorMessage += "\nwrong name format";
+			if(surnameMatches == false) errorMessage += "\nwrong surname format";
+			if(peselMatches == false) errorMessage += "\nwrong pesel format";
+			if(cityMatches == false) errorMessage += "\nwrong city format";
+			if(streetMatches == false) errorMessage += "\nwrong street format";
+			
+			
 			//true is every field matches its regex, false otherwise
-			boolean dataIsValid = true;
+			boolean dataIsValid = nameMatches && surnameMatches && peselMatches && cityMatches && streetMatches;
 			
 			if(dataIsValid == true)
 			{
