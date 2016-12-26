@@ -69,5 +69,27 @@ public class ClientEditView
         }
         return false;
     }
+    
+	public void DisplaySuccessPopup()
+	{
+		JPanel panel = new JPanel(new GridLayout(0, 1));
+	    
+		JLabel text = new JLabel("Client modified succesfully.");
+		panel.add(text);
+		
+		JOptionPane.showConfirmDialog(null, panel, "Client updated", JOptionPane.PLAIN_MESSAGE);
+	}
+	
+	public void DisplayErrorPopup(String errorMessage)
+	{
+		JPanel panel = new JPanel(new GridLayout(0, 1));
+	    
+		JLabel text = new JLabel("Error: ");
+		JLabel error = new JLabel(errorMessage);
+		panel.add(text);
+		panel.add(error);
+		
+		JOptionPane.showConfirmDialog(null, panel, "Error", JOptionPane.PLAIN_MESSAGE);	
+	}
 	
 }

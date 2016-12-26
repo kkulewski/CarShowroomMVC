@@ -140,8 +140,19 @@ public class ClientController
 				String clientNewStreet = clientEditView.street;
 				
 				//TODO: regex check new data
+				String errorMessage = "";
+				//true if every field matches its regex, false otherwise
+				boolean dataIsValid = true;
 				
-				UpdateClient(clientId, clientNewName, clientNewSurname, clientNewPesel, clientNewCity, clientNewStreet);
+				if(dataIsValid == true)
+				{
+					UpdateClient(clientId, clientNewName, clientNewSurname, clientNewPesel, clientNewCity, clientNewStreet);
+					clientEditView.DisplaySuccessPopup();
+				}
+				else
+				{
+					clientEditView.DisplayErrorPopup(errorMessage);
+				}
 				
 				RefreshView();
 			}
