@@ -12,22 +12,17 @@ public class ClientModel extends Database
 	
 	public boolean insertClient(Client client)
 	{
-		String name = client.getName();
-		String surname = client.getSurname();
-		long pesel = client.getPesel();
-		String city = client.getCity();
-		String street = client.getStreet();
 		
 		try
 		{
 			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?, ?, ?, ?);";
-			
 			PreparedStatement insertStatement = conn.prepareStatement(query);
-			insertStatement.setString(1, name);
-			insertStatement.setString(2, surname);
-			insertStatement.setLong(3, pesel);
-			insertStatement.setString(4, city);
-			insertStatement.setString(5, street);
+			
+			insertStatement.setString(1, client.getName());
+			insertStatement.setString(2, client.getSurname());
+			insertStatement.setLong(3, client.getPesel());
+			insertStatement.setString(4, client.getCity());
+			insertStatement.setString(5, client.getStreet());
 			
 			insertStatement.execute();
 			insertStatement.close();
@@ -47,8 +42,8 @@ public class ClientModel extends Database
 			String query = "DELETE FROM "+tableName+" WHERE id_"+tableName+" = ?;";
 			
 			PreparedStatement deleteStatement = conn.prepareStatement(query);
-			int clientId = client.getId();
-			deleteStatement.setInt(1, clientId);
+			
+			deleteStatement.setInt(1, client.getId());
 			
 			deleteStatement.execute();
 			deleteStatement.close();
@@ -63,24 +58,18 @@ public class ClientModel extends Database
 	
 	public boolean updateClient(Client client)
 	{
-		int id = client.getId();
-		String name = client.getName();
-		String surname = client.getSurname();
-		long pesel = client.getPesel();
-		String city = client.getCity();
-		String street = client.getStreet();
 		
 		try
 		{
 			String query = "UPDATE "+tableName+" SET name = ?, surname = ?, pesel = ?, city = ?, street = ? WHERE id_"+tableName+" = ?;";
-			
 			PreparedStatement updateStatement = conn.prepareStatement(query);
-			updateStatement.setString(1, name);
-			updateStatement.setString(2, surname);
-			updateStatement.setLong(3, pesel);
-			updateStatement.setString(4, city);
-			updateStatement.setString(5, street);
-			updateStatement.setInt(6, id);
+			
+			updateStatement.setString(1, client.getName());
+			updateStatement.setString(2, client.getSurname());
+			updateStatement.setLong(3, client.getPesel());
+			updateStatement.setString(4, client.getCity());
+			updateStatement.setString(5, client.getStreet());
+			updateStatement.setInt(6, client.getId());
 			
 			updateStatement.execute();
 			updateStatement.close();
@@ -100,18 +89,19 @@ public class ClientModel extends Database
 	    try 
 	    {
 	        ResultSet result = stat.executeQuery("SELECT * FROM "+tableName+";");
-	        int id;
-	        long pesel;
-	        String name, surname, city, street;
+	        
 	        while(result.next()) 
 	        {
-	            id = result.getInt("id_client");
-	            name = result.getString("name");
-	            surname = result.getString("surname");
-	            pesel = result.getLong("pesel");
-	            city = result.getString("city");
-	            street = result.getString("street");
-	            clientList.add(new Client(id, name, surname, pesel, city, street));
+	        	Client client = new Client
+	            		(
+	            			result.getInt("id_client"), 
+	            			result.getString("name"), 
+	            			result.getString("surname"), 
+	            			result.getLong("pesel"), 
+	            			result.getString("city"), 
+	            			result.getString("street")
+	            		);
+	            clientList.add(client);
 	        }
 	        result.close();
 	    } 
@@ -128,8 +118,8 @@ public class ClientModel extends Database
 		try
 		{
 			String selectQuery = "SELECT * FROM "+tableName+" WHERE "+rowName+" = ?;";
-			
 			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+			
 			//row type is based on rowName
 			switch(rowName)
 			{
@@ -162,20 +152,18 @@ public class ClientModel extends Database
 			
 			ResultSet result = selectStatement.executeQuery();
 
-			int id;
-	        long pesel;
-	        String name, surname, city, street;
 	        Client foundClient = null;
 	        while(result.next()) 
 	        {
-	            id = result.getInt("id_client");
-	            name = result.getString("name");
-	            surname = result.getString("surname");
-	            pesel = result.getLong("pesel");
-	            city = result.getString("city");
-	            street = result.getString("street");
-	            foundClient = new Client(id, name, surname, pesel, city, street);
-	            
+	            foundClient = new Client
+	            		(
+	            			result.getInt("id_client"), 
+	            			result.getString("name"), 
+	            			result.getString("surname"), 
+	            			result.getLong("pesel"), 
+	            			result.getString("city"), 
+	            			result.getString("street")
+	            		);
 	        }
 	        return foundClient;
 		}
