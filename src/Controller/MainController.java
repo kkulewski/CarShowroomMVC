@@ -59,7 +59,17 @@ public class MainController
 		clientModel.insertClient("Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70");
 		clientModel.insertClient("Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A");
 		clientModel.insertClient("Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11");
-		clientModel.insertClient("Lukasz", "Kowal", 01033055001L, "Wroclaw", "Dluga 289");
+		
+		//EXAMPLE POSITIONS
+		
+		
+		//EXAMPLE WORKERS
+		
+		
+		//EXAMPLE CARS
+		
+		
+		//EXAMPLE PURHCASES
 	}
 	
 	
