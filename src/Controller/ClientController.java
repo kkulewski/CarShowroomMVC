@@ -40,6 +40,7 @@ public class ClientController
 		clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
 		clientListView.clientList.clearSelection();
 		//update view
+		clientListView.scrollableClientList.repaint();
 		clientListView.invalidate();
 		clientListView.validate();
 	}

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
@@ -16,6 +17,7 @@ import Model.ClientTableModel;
 public class ClientListView extends JPanel
 {
 	public JTable clientList;
+	public JScrollPane scrollableClientList;
 	public JButton editButton = new JButton("Edit");
 	public JButton removeButton = new JButton("Remove");
 	
@@ -38,7 +40,9 @@ public class ClientListView extends JPanel
 		this.clientTableModel = clientTableModel;
 		this.clientList = new JTable(this.clientTableModel);
 		this.clientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.add(clientList);
+
+		this.scrollableClientList = new JScrollPane(clientList);
+		this.add(scrollableClientList);
 		
 	}
 	
