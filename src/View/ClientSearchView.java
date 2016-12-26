@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import Model.Client;
@@ -17,9 +20,11 @@ public class ClientSearchView extends JPanel
 	//POPUP
     JPanel panel;
     
-	//PESEL
-	public JTextField peselField = new JTextField(20);
-	JLabel peselLabel = new JLabel("PESEL:");
+	//SEARCH ROW AND VALUE
+    public JComboBox<String> searchRowCombo;
+	public JTextField searchValueField;
+	JLabel searchValueLabel;
+	JLabel searchRowLabel;
 	
 	//SEARCH BUTTON
 	public JButton submitButton = new JButton("Search");
@@ -30,13 +35,33 @@ public class ClientSearchView extends JPanel
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
 		this.setLayout(new GridLayout(2, 1));
-		
+		  
+	      
 		//DATA
 		JPanel dataPanel = new JPanel();
 		dataPanel.setLayout(new GridLayout(0,1));
-		//PESEL
-		dataPanel.add(peselLabel);
-		dataPanel.add(peselField);
+
+	    searchRowLabel = new JLabel("Select column to search:");
+	    dataPanel.add(searchRowLabel);
+		
+		DefaultComboBoxModel<String> searchRowName = new DefaultComboBoxModel<String>();
+	    searchRowName.addElement("name");
+	    searchRowName.addElement("surname");
+	    searchRowName.addElement("pesel");
+	    searchRowName.addElement("city");
+	    searchRowName.addElement("street");
+	    searchRowCombo = new JComboBox<String>(searchRowName);    
+	    searchRowCombo.setSelectedIndex(0);
+	    JScrollPane searchRowScrollPane = new JScrollPane(searchRowCombo);    
+	    
+		dataPanel.add(searchRowScrollPane);
+		
+		searchValueLabel = new JLabel("Set searched value:");
+		dataPanel.add(searchValueLabel);
+		
+		searchValueField = new JTextField(70);
+		dataPanel.add(searchValueField);
+		
 		this.add(dataPanel);
 		
 		//BUTTONS

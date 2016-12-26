@@ -263,8 +263,8 @@ public class ClientController
 		public void actionPerformed(ActionEvent arg0)
 		{
 			//TODO: dynamic get rowName
-			String rowName = "pesel";
-			String rowValue = clientSearchView.peselField.getText();
+			String rowName = (String) clientSearchView.searchRowCombo.getSelectedItem();
+			String rowValue = clientSearchView.searchValueField.getText();
 			
 			Client foundClient = clientModel.findClient(rowName, rowValue);
 			if(foundClient != null)
