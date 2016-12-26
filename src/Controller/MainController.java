@@ -46,6 +46,22 @@ public class MainController
 		mainView.ClientSearchListener(new ClientSearchListener());
 	}
 	
+	public void Run()
+	{
+		//
+	}
+	
+	public void FillWithTestData()
+	{
+		//EXAMPLE CLIENTS
+		clientModel.insertClient("Jan", "Kowalski", 12233455666L, "Warszawa", "Dluga 3");
+		clientModel.insertClient("Janusz", "Nowak", 87213452266L, "Gdansk", "Krotka 4a");
+		clientModel.insertClient("Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70");
+		clientModel.insertClient("Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A");
+		clientModel.insertClient("Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11");
+		clientModel.insertClient("Lukasz", "Kowal", 01033055001L, "Wroclaw", "Dluga 289");
+	}
+	
 	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
 	class ClientAddListener implements ActionListener
