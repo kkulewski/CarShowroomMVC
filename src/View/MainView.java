@@ -9,8 +9,12 @@ import javax.swing.*;
 public class MainView extends JFrame
 {
 	JMenuBar menuBar;
-	JMenu menuMain, menuClient, menuWorker;
-	JMenuItem clientAdd, clientList, clientSearch, workerAdd, workerList, workerSearch;
+	JMenu menuMain, menuClient, menuWorker, menuPosition, menuCar, menuPurchase;
+	JMenuItem clientAdd, clientList, clientSearch, 
+	workerAdd, workerList, workerSearch,
+	positionAdd, positionList, positionSearch,
+	carAdd, carList, carSearch,
+	purchaseAdd, purchaseList, purchaseSearch;
 	
 	public MainView()
 	{
@@ -47,6 +51,39 @@ public class MainView extends JFrame
 		menuWorker.add(workerList);
 		workerSearch = new JMenuItem("Search worker...");
 		menuWorker.add(workerSearch);
+		
+		//POSITION
+		menuPosition = new JMenu("Position");
+		menuBar.add(menuPosition);
+		
+		positionAdd = new JMenuItem("Add new position");
+		menuPosition.add(positionAdd);
+		positionList = new JMenuItem("List positions");
+		menuPosition.add(positionList);
+		positionSearch = new JMenuItem("Search position...");
+		menuPosition.add(positionSearch);
+		
+		//CAR
+		menuCar = new JMenu("Car");
+		menuBar.add(menuCar);
+		
+		carAdd = new JMenuItem("Add new car");
+		menuCar.add(carAdd);
+		carList = new JMenuItem("List cars");
+		menuCar.add(carList);
+		carSearch = new JMenuItem("Search car...");
+		menuCar.add(carSearch);
+		
+		//PURCHASE
+		menuPurchase = new JMenu("Purchase");
+		menuBar.add(menuPurchase);
+		
+		purchaseAdd = new JMenuItem("Add new purchase");
+		menuPurchase.add(purchaseAdd);
+		purchaseList = new JMenuItem("List purchases");
+		menuPurchase.add(purchaseList);
+		purchaseSearch = new JMenuItem("Search purchase...");
+		menuPurchase.add(purchaseSearch);
 	}
 	
 	public void ClientAddListener(ActionListener clientAddListener) 
