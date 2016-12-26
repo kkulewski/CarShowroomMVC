@@ -2,7 +2,6 @@ package View;
 
 import java.awt.GridLayout;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
