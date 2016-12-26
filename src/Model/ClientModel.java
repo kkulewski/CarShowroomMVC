@@ -139,7 +139,14 @@ public class ClientModel extends Database
 				selectStatement.setString(1, rowValue);
 				break;
 			case "pesel":
-				selectStatement.setLong(1, Long.parseLong(rowValue));
+				try 
+				{
+					selectStatement.setLong(1, Long.parseLong(rowValue));	
+				}
+				catch(Exception e)
+				{
+					selectStatement.setLong(1, 0L);
+				}
 				break;
 			case "city":
 				selectStatement.setString(1, rowValue);
