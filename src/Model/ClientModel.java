@@ -60,8 +60,15 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	public boolean updateClient(int id, String name, String surname, long pesel, String city, String street)
+	public boolean updateClient(Client client)
 	{
+		int id = client.getId();
+		String name = client.getName();
+		String surname = client.getSurname();
+		long pesel = client.getPesel();
+		String city = client.getCity();
+		String street = client.getStreet();
+		
 		try
 		{
 			String query = "UPDATE client SET name = ?, surname = ?, pesel = ?, city = ?, street = ? WHERE id_client = ?;";

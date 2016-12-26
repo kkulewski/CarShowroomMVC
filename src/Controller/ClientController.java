@@ -59,9 +59,9 @@ public class ClientController
 		clientModel.deleteClient(client);
 	}
 	
-	public void UpdateClient(int id, String name, String surname, long pesel, String city, String street)
+	public void UpdateClient(Client client)
 	{
-		clientModel.updateClient(id, name, surname, pesel, city, street);
+		clientModel.updateClient(client);
 	}
 	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
@@ -153,23 +153,12 @@ public class ClientController
 			
 			Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
 			
-			int clientId = selectedClient.getId();
-			
 			// FILL POPUP FIELDS WITH SELECTED ITEM DATA
-			String clientName = selectedClient.getName();
-			clientEditView.nameField.setText(clientName);
-			
-			String clientSurname = selectedClient.getSurname();
-			clientEditView.surnameField.setText(clientSurname);
-			
-			String clientPesel = String.valueOf(selectedClient.getPesel());
-			clientEditView.peselField.setText(clientPesel);
-			
-			String clientCity = selectedClient.getCity();
-			clientEditView.cityField.setText(clientCity);
-			
-			String clientStreet = selectedClient.getStreet();
-			clientEditView.streetField.setText(clientStreet);
+			clientEditView.nameField.setText(selectedClient.getName());
+			clientEditView.surnameField.setText(selectedClient.getSurname());
+			clientEditView.peselField.setText(String.valueOf(selectedClient.getPesel()));
+			clientEditView.cityField.setText(selectedClient.getCity());
+			clientEditView.streetField.setText(selectedClient.getStreet());
 			
 			
 			boolean itemModified = clientEditView.DisplayPopup();
@@ -227,7 +216,13 @@ public class ClientController
 				
 				if(dataIsValid == true)
 				{
-					UpdateClient(clientId, name, surname, pesel, city, street);
+					selectedClient.setName(name);
+					selectedClient.setSurname(surname);
+					selectedClient.setPesel(pesel);
+					selectedClient.setCity(city);
+					selectedClient.setStreet(street);
+					
+					UpdateClient(selectedClient);
 					clientEditView.DisplaySuccessPopup();
 				}
 				else
