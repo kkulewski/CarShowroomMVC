@@ -87,7 +87,7 @@ public class ClientController
 				clientAddView.cityField.setText("");
 				clientAddView.streetField.setText("");
 				
-				clientAddView.DisplayClientAddedPopup();
+				clientAddView.DisplaySuccessPopup();
 			}
 			else
 			{

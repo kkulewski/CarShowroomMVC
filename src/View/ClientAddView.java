@@ -71,7 +71,7 @@ public class ClientAddView extends JPanel
 		this.add(buttonPanel);
 	}
 	
-	public void DisplayClientAddedPopup()
+	public void DisplaySuccessPopup()
 	{
 		JPanel panel = new JPanel(new GridLayout(0, 1));
 	    
