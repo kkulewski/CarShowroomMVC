@@ -73,16 +73,27 @@ public class ClientController
 			String street = clientAddView.streetField.getText();
 			
 			//TODO: VALIDATION WITH REGEX
+			String errorMessage = "";
+			//true is every field matches its regex, false otherwise
+			boolean dataIsValid = true;
 			
-			InsertClient(name, surname, pesel, city, street);
+			if(dataIsValid == true)
+			{
+				InsertClient(name, surname, pesel, city, street);
+				
+				clientAddView.nameField.setText("");
+				clientAddView.surnameField.setText("");
+				clientAddView.peselField.setText("");
+				clientAddView.cityField.setText("");
+				clientAddView.streetField.setText("");
+				
+				clientAddView.DisplayClientAddedPopup();
+			}
+			else
+			{
+				clientAddView.DisplayErrorPopup(errorMessage);
+			}
 			
-			clientAddView.nameField.setText("");
-			clientAddView.surnameField.setText("");
-			clientAddView.peselField.setText("");
-			clientAddView.cityField.setText("");
-			clientAddView.streetField.setText("");
-			
-			System.out.println("Added record: [" + name + "] [" + surname + "] [" + pesel + "] [" + city + "] [" + street + "] to db");
 		}
 	}
 	

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -68,6 +69,28 @@ public class ClientAddView extends JPanel
 		//SUBMIT
 		buttonPanel.add(submitButton);
 		this.add(buttonPanel);
+	}
+	
+	public void DisplayClientAddedPopup()
+	{
+		JPanel panel = new JPanel(new GridLayout(0, 1));
+	    
+		JLabel text = new JLabel("Client added succesfully.");
+		panel.add(text);
+		
+		JOptionPane.showConfirmDialog(null, panel, "Client added", JOptionPane.PLAIN_MESSAGE);
+	}
+	
+	public void DisplayErrorPopup(String errorMessage)
+	{
+		JPanel panel = new JPanel(new GridLayout(0, 1));
+	    
+		JLabel text = new JLabel("Error: ");
+		JLabel error = new JLabel(errorMessage);
+		panel.add(text);
+		panel.add(error);
+		
+		JOptionPane.showConfirmDialog(null, panel, "Error", JOptionPane.PLAIN_MESSAGE);	
 	}
 	
 	public void ClientAddSubmitListener(ActionListener clientAddSubmitListener) 
