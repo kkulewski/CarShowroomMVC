@@ -39,35 +39,35 @@ public class ClientAddView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridLayout(0,1));
+		this.setLayout(new GridLayout(2,1));
 		
-		//NAME LABEL
-		this.add(nameLabel);
-		//NAME FIELD
-		this.add(nameField);
-
-		//SURNAME LABEL
-		this.add(surnameLabel);
-		//SURNAME FIELD
-		this.add(surnameField);
+		//DATA
+		JPanel dataPanel = new JPanel();
+		dataPanel.setLayout(new GridLayout(0,1));
+		//NAME
+		dataPanel.add(nameLabel);
+		dataPanel.add(nameField);
+		//SURNAME
+		dataPanel.add(surnameLabel);
+		dataPanel.add(surnameField);
+		//PESEL
+		dataPanel.add(peselLabel);
+		dataPanel.add(peselField);
+		//CITY
+		dataPanel.add(cityLabel);
+		dataPanel.add(cityField);
+		//STREET
+		dataPanel.add(streetLabel);
+		dataPanel.add(streetField);
+		this.add(dataPanel);
 		
-		//PESEL LABEL
-		this.add(peselLabel);
-		//PESEL FIELD
-		this.add(peselField);
 		
-		//CITY LABEL
-		this.add(cityLabel);
-		//CITY FIELD
-		this.add(cityField);
-		
-		//STREET LABEL
-		this.add(streetLabel);
-		//STREET FIELD
-		this.add(streetField);
-
+		//BUTTONS
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(1,1));
 		//SUBMIT
-		this.add(submitButton);
+		buttonPanel.add(submitButton);
+		this.add(buttonPanel);
 	}
 	
 	public void ClientAddSubmitListener(ActionListener clientAddSubmitListener) 
