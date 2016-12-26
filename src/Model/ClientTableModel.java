@@ -50,16 +50,6 @@ public class ClientTableModel extends AbstractTableModel
     {
         return clients.size();
     }
-
-    @Override
-    public Class getColumnClass(int column)
-    {
-        switch (column)
-        {
-            case 2: return long.class;
-            default: return String.class;
-        }
-    }
      
     @Override
     public boolean isCellEditable(int row, int column)
