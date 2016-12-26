@@ -1,6 +1,8 @@
 package Controller;
 
 import java.awt.event.ActionListener;
+
+import Model.Client;
 import Model.ClientModel;
 import Model.ClientTableModel;
 
@@ -54,11 +56,11 @@ public class MainController
 	public void FillWithTestData()
 	{
 		//EXAMPLE CLIENTS
-		clientModel.insertClient("Jan", "Kowalski", 12233455666L, "Warszawa", "Dluga 3");
-		clientModel.insertClient("Janusz", "Nowak", 87213452266L, "Gdansk", "Krotka 4a");
-		clientModel.insertClient("Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70");
-		clientModel.insertClient("Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A");
-		clientModel.insertClient("Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11");
+		clientModel.insertClient(new Client(1, "Jan", "Kowalski", 12233455666L, "Warszawa", "Dluga 3"));
+		clientModel.insertClient(new Client(2, "Janusz", "Nowak", 87213452266L, "Gdansk", "Krotka 4a"));
+		clientModel.insertClient(new Client(3, "Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70"));
+		clientModel.insertClient(new Client(4, "Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A"));
+		clientModel.insertClient(new Client(5, "Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11"));
 		
 		//EXAMPLE POSITIONS
 		

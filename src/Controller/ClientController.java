@@ -49,9 +49,9 @@ public class ClientController
 		clientListView.validate();
 	}
 	
-	public void InsertClient(String name, String surname, long pesel, String city, String street)
+	public void InsertClient(Client client)
 	{
-		clientModel.insertClient(name, surname, pesel, city, street);
+		clientModel.insertClient(client);
 	}
 	
 	public void DeleteClient(Client client)
@@ -120,7 +120,10 @@ public class ClientController
 			
 			if(dataIsValid == true)
 			{
-				InsertClient(name, surname, pesel, city, street);
+				int tempId = 0;
+				Client client = new Client(tempId, name, surname, pesel, city, street);
+				
+				InsertClient(client);
 				
 				clientAddView.nameField.setText("");
 				clientAddView.surnameField.setText("");

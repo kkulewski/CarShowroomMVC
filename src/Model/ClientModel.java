@@ -9,8 +9,14 @@ import Model.Client;
 public class ClientModel extends Database 
 {
 	
-	public boolean insertClient(String name, String surname, long pesel, String city, String street)
+	public boolean insertClient(Client client)
 	{
+		String name = client.getName();
+		String surname = client.getSurname();
+		long pesel = client.getPesel();
+		String city = client.getCity();
+		String street = client.getStreet();
+		
 		try
 		{
 			String query = "INSERT INTO client VALUES (NULL, ?, ?, ?, ?, ?);";
