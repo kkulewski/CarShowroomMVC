@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import Model.Client;
 import Model.ClientModel;
 import Model.ClientTableModel;
+import Model.PositionModel;
+import Model.PositionTableModel;
 
 import java.awt.event.ActionEvent;
 
@@ -13,6 +15,10 @@ import View.ClientEditView;
 import View.ClientListView;
 import View.ClientSearchView;
 import View.MainView;
+import View.PositionAddView;
+import View.PositionEditView;
+import View.PositionListView;
+import View.PositionSearchView;
 
 public class MainController 
 {
@@ -23,9 +29,18 @@ public class MainController
 	private ClientListView clientListView;
 	private ClientEditView clientEditView;
 	private ClientSearchView clientSearchView;
-	
+
 	public ClientModel clientModel;
 	private ClientTableModel clientTableModel;
+	
+	private PositionController positionController;
+	private PositionAddView positionAddView;
+	private PositionListView positionListView;
+	private PositionEditView positionEditView;
+	private PositionSearchView positionSearchView;
+	
+	public PositionModel positionModel;
+	private PositionTableModel positionTableModel;
 
 	
 	public MainController(MainView mainView)
@@ -46,6 +61,21 @@ public class MainController
 		mainView.ClientAddListener(new ClientAddListener());
 		mainView.ClientListListener(new ClientListListener());
 		mainView.ClientSearchListener(new ClientSearchListener());
+		
+		this.positionModel = new PositionModel();
+		this.positionAddView = new PositionAddView();
+		this.positionTableModel = new PositionTableModel(positionModel.list());
+		this.positionListView = new PositionListView(positionTableModel);
+		this.positionEditView = new PositionEditView();
+		this.positionSearchView = new PositionSearchView();
+		
+		this.positionController = new PositionController(positionAddView, positionListView, positionEditView, positionSearchView);
+		positionAddView.PositionAddSubmitListener(positionController.addSubmitListener);
+		positionSearchView.PositionSearchSubmitListener(positionController.searchSubmitListener);
+		
+		mainView.PositionAddListener(new PositionAddListener());
+		mainView.PositionListListener(new PositionListListener());
+		mainView.PositionSearchListener(new PositionSearchListener());
 	}
 	
 	public void Run()
@@ -109,6 +139,44 @@ public class MainController
 		public void actionPerformed(ActionEvent arg0) 
 		{	
 			mainView.setContentPane(clientSearchView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class PositionAddListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{		
+			mainView.setContentPane(positionAddView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class PositionListListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{
+			//TODO: make TableModel update itself
+			//HACK - update data in TableModel (flush and load from db)
+			positionListView.positionTableModel.ReloadPositionTable(positionModel.list());
+			//HACK
+			
+			mainView.setContentPane(positionListView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class PositionSearchListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			mainView.setContentPane(positionSearchView);
 			mainView.invalidate();
 			mainView.validate();
 		}
