@@ -8,6 +8,9 @@ import Model.ClientTableModel;
 import Model.Position;
 import Model.PositionModel;
 import Model.PositionTableModel;
+import Model.Car;
+import Model.CarModel;
+import Model.CarTableModel;
 
 import java.awt.event.ActionEvent;
 
@@ -20,6 +23,10 @@ import View.PositionAddView;
 import View.PositionEditView;
 import View.PositionListView;
 import View.PositionSearchView;
+import View.CarAddView;
+import View.CarEditView;
+import View.CarListView;
+import View.CarSearchView;
 
 public class MainController 
 {
@@ -42,6 +49,15 @@ public class MainController
 	
 	public PositionModel positionModel;
 	private PositionTableModel positionTableModel;
+	
+	private CarController carController;
+	private CarAddView carAddView;
+	private CarListView carListView;
+	private CarEditView carEditView;
+	private CarSearchView carSearchView;
+	
+	public CarModel carModel;
+	private CarTableModel carTableModel;
 
 	
 	public MainController(MainView mainView)
@@ -77,6 +93,21 @@ public class MainController
 		mainView.PositionAddListener(new PositionAddListener());
 		mainView.PositionListListener(new PositionListListener());
 		mainView.PositionSearchListener(new PositionSearchListener());
+		
+		this.carModel = new CarModel();
+		this.carAddView = new CarAddView();
+		this.carTableModel = new CarTableModel(carModel.list());
+		this.carListView = new CarListView(carTableModel);
+		this.carEditView = new CarEditView();
+		this.carSearchView = new CarSearchView();
+		
+		this.carController = new CarController(carAddView, carListView, carEditView, carSearchView);
+		carAddView.CarAddSubmitListener(carController.addSubmitListener);
+		carSearchView.CarSearchSubmitListener(carController.searchSubmitListener);
+		
+		mainView.CarAddListener(new CarAddListener());
+		mainView.CarListListener(new CarListListener());
+		mainView.CarSearchListener(new CarSearchListener());
 	}
 	
 	public void Run()
@@ -103,7 +134,10 @@ public class MainController
 		
 		
 		//EXAMPLE CARS
-		
+		carModel.insert(new Car(1, "Audi", "A7", 650000));
+		carModel.insert(new Car(2, "VW", "Golf", 90000));
+		carModel.insert(new Car(3, "VW", "Passat", 160000));
+		carModel.insert(new Car(4, "Audi", "A3", 125000));
 		
 		//EXAMPLE PURHCASES
 	}
@@ -186,6 +220,42 @@ public class MainController
 		}
 	}
 	
+	class CarAddListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{		
+			mainView.setContentPane(carAddView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class CarListListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{
+			//TODO: make TableModel update itself
+			//HACK - update data in TableModel (flush and load from db)
+			carListView.carTableModel.ReloadCarTable(carModel.list());
+			//HACK
+			
+			mainView.setContentPane(carListView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class CarSearchListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			mainView.setContentPane(carSearchView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
 }
-
-
