@@ -11,6 +11,9 @@ import Model.PositionTableModel;
 import Model.Car;
 import Model.CarModel;
 import Model.CarTableModel;
+import Model.Worker;
+import Model.WorkerModel;
+import Model.WorkerTableModel;
 
 import java.awt.event.ActionEvent;
 
@@ -27,6 +30,10 @@ import View.CarAddView;
 import View.CarEditView;
 import View.CarListView;
 import View.CarSearchView;
+import View.WorkerAddView;
+import View.WorkerEditView;
+import View.WorkerListView;
+import View.WorkerSearchView;
 
 public class MainController 
 {
@@ -58,6 +65,15 @@ public class MainController
 	
 	public CarModel carModel;
 	private CarTableModel carTableModel;
+	
+	private WorkerController workerController;
+	private WorkerAddView workerAddView;
+	private WorkerListView workerListView;
+	private WorkerEditView workerEditView;
+	private WorkerSearchView workerSearchView;
+	
+	public WorkerModel workerModel;
+	private WorkerTableModel workerTableModel;
 
 	
 	public MainController(MainView mainView)
@@ -108,6 +124,21 @@ public class MainController
 		mainView.CarAddListener(new CarAddListener());
 		mainView.CarListListener(new CarListListener());
 		mainView.CarSearchListener(new CarSearchListener());
+		
+		this.workerModel = new WorkerModel();
+		this.workerAddView = new WorkerAddView();
+		this.workerTableModel = new WorkerTableModel(workerModel.list());
+		this.workerListView = new WorkerListView(workerTableModel);
+		this.workerEditView = new WorkerEditView();
+		this.workerSearchView = new WorkerSearchView();
+		
+		this.workerController = new WorkerController(workerAddView, workerListView, workerEditView, workerSearchView);
+		workerAddView.WorkerAddSubmitListener(workerController.addSubmitListener);
+		workerSearchView.WorkerSearchSubmitListener(workerController.searchSubmitListener);
+		
+		mainView.WorkerAddListener(new WorkerAddListener());
+		mainView.WorkerListListener(new WorkerListListener());
+		mainView.WorkerSearchListener(new WorkerSearchListener());
 	}
 	
 	public void Run()
@@ -131,6 +162,9 @@ public class MainController
 		positionModel.insert(new Position(4, "Stazysta", 1200));
 		
 		//EXAMPLE WORKERS
+		workerModel.insert(new Worker(1, "Dawid", "Jablonski", 67231155411L, "Gdansk", "Diamentowa 1", 1));
+		workerModel.insert(new Worker(2, "Mateusz", "Sosnowski", 55513455565L, "Warszawa", "Opalowa 7b", 2));
+		workerModel.insert(new Worker(3, "Lukasz", "Swierk", 32131755221L, "Katowice", "Brylantowa 12", 3));
 		
 		
 		//EXAMPLE CARS
@@ -253,6 +287,44 @@ public class MainController
 		public void actionPerformed(ActionEvent arg0) 
 		{	
 			mainView.setContentPane(carSearchView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class WorkerAddListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{		
+			mainView.setContentPane(workerAddView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class WorkerListListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{
+			//TODO: make TableModel update itself
+			//HACK - update data in TableModel (flush and load from db)
+			workerListView.workerTableModel.ReloadWorkerTable(workerModel.list());
+			//HACK
+			
+			mainView.setContentPane(workerListView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class WorkerSearchListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			mainView.setContentPane(workerSearchView);
 			mainView.invalidate();
 			mainView.validate();
 		}

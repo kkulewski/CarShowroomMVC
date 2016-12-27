@@ -137,6 +137,23 @@ public class MainView extends JFrame
 		carSearch.addActionListener(carSearchListener);
 	}
 	
+	// WORKER
+	
+	public void WorkerAddListener(ActionListener workerAddListener) 
+	{
+		workerAdd.addActionListener(workerAddListener);
+	}
+	
+	public void WorkerListListener(ActionListener workerListListener) 
+	{
+		workerList.addActionListener(workerListListener);
+	}
+	
+	public void WorkerSearchListener(ActionListener workerSearchListener) 
+	{
+		workerSearch.addActionListener(workerSearchListener);
+	}
+	
 	public void ActionCommited()
 	{
 		JOptionPane.showMessageDialog(null, "Button clicked");
