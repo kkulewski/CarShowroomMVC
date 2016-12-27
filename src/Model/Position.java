@@ -1,14 +1,12 @@
 package Model;
 
-import java.math.BigDecimal;
-
 public class Position 
 {
 	private int id;
 	private String title;
-	private BigDecimal salary;
+	private int salary;
 	
-	public Position(int id, String title, BigDecimal salary) {
+	public Position(int id, String title, int salary) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -27,10 +25,10 @@ public class Position
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public BigDecimal getSalary() {
+	public int getSalary() {
 		return salary;
 	}
-	public void setSalary(BigDecimal salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 }

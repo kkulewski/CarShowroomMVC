@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.List;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
@@ -79,7 +78,7 @@ public class PositionTableModel extends AbstractTableModel
         switch (column)
         {
             case 0: position.setTitle((String)value); break;
-            case 1: position.setSalary((BigDecimal)value); break;
+            case 1: position.setSalary((int)value); break;
         }
      
         fireTableCellUpdated(row, column);

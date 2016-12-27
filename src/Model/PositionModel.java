@@ -19,7 +19,7 @@ public class PositionModel extends Database
 			PreparedStatement insertStatement = conn.prepareStatement(query);
 			
 			insertStatement.setString(1, row.getTitle());
-			insertStatement.setBigDecimal(2, row.getSalary());
+			insertStatement.setInt(2, row.getSalary());
 			
 			insertStatement.execute();
 			insertStatement.close();
@@ -61,7 +61,7 @@ public class PositionModel extends Database
 			PreparedStatement updateStatement = conn.prepareStatement(query);
 			
 			updateStatement.setString(1, row.getTitle());
-			updateStatement.setBigDecimal(2, row.getSalary());
+			updateStatement.setInt(2, row.getSalary());
 			updateStatement.setInt(3, row.getId());
 			
 			updateStatement.execute();
@@ -90,7 +90,7 @@ public class PositionModel extends Database
 	            		(
 	            			result.getInt("id_position"), 
 	            			result.getString("title"), 
-	            			result.getBigDecimal("salary")
+	            			result.getInt("salary")
 	            		);
 	            rowList.add(row);
 	        }
@@ -131,7 +131,7 @@ public class PositionModel extends Database
 	            		(
 	            			result.getInt("id_position"), 
 	            			result.getString("title"), 
-	            			result.getBigDecimal("salary")
+	            			result.getInt("salary")
 	            		);
 	        }
 	        return foundRow;
