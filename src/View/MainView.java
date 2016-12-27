@@ -86,6 +86,8 @@ public class MainView extends JFrame
 		menuPurchase.add(purchaseSearch);
 	}
 	
+	//CLIENT
+	
 	public void ClientAddListener(ActionListener clientAddListener) 
 	{
 		clientAdd.addActionListener(clientAddListener);
@@ -99,6 +101,23 @@ public class MainView extends JFrame
 	public void ClientSearchListener(ActionListener clientSearchListener) 
 	{
 		clientSearch.addActionListener(clientSearchListener);
+	}
+	
+	// POSITION
+	
+	public void PositionAddListener(ActionListener positionAddListener) 
+	{
+		positionAdd.addActionListener(positionAddListener);
+	}
+	
+	public void PositionListListener(ActionListener positionListListener) 
+	{
+		positionList.addActionListener(positionListListener);
+	}
+	
+	public void PositionSearchListener(ActionListener positionSearchListener) 
+	{
+		positionSearch.addActionListener(positionSearchListener);
 	}
 	
 	public void ActionCommited()
