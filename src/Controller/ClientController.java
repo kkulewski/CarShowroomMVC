@@ -16,37 +16,38 @@ import View.ClientSearchView;
 
 public class ClientController 
 {
-	ClientModel clientModel = new ClientModel();
-	ClientAddView clientAddView;
-	ClientListView clientListView;
-	ClientEditView clientEditView;
-	ClientSearchView clientSearchView;
+	ClientModel model = new ClientModel();
+	ClientAddView addView;
+	ClientListView listView;
+	ClientEditView editView;
+	ClientSearchView searchView;
 	
-	ClientAddSubmitListener clientAddSubmitListener;
-	ClientSearchSubmitListener clientSearchSubmitListener;
+	ClientAddSubmitListener addSubmitListener;
+	ClientSearchSubmitListener searchSubmitListener;
 	
-	public ClientController(ClientAddView clientAddView, ClientListView clientListView, ClientEditView clientEditView, ClientSearchView clientSearchView)
+	public ClientController(ClientAddView addView, ClientListView listView, ClientEditView editView, ClientSearchView searchView)
 	{
-		this.clientAddView = clientAddView;
-		this.clientListView = clientListView;
-		this.clientEditView = clientEditView;
-		this.clientSearchView = clientSearchView;
-		this.clientAddSubmitListener = new ClientAddSubmitListener();
-		this.clientSearchSubmitListener = new ClientSearchSubmitListener();
+		this.addView = addView;
+		this.listView = listView;
+		this.editView = editView;
+		this.searchView = searchView;
 		
-		this.clientListView.ClientEditListener(new ClientEditListener());
-		this.clientListView.ClientRemoveListener(new ClientRemoveListener());
+		this.addSubmitListener = new ClientAddSubmitListener();
+		this.searchSubmitListener = new ClientSearchSubmitListener();
+		
+		this.listView.ClientEditListener(new ClientEditListener());
+		this.listView.ClientRemoveListener(new ClientRemoveListener());
 	}
 	
 	public void RefreshView()
 	{
 		//reload clientTable data from DB
-		clientListView.clientTableModel.ReloadClientTable(clientModel.list());
-		clientListView.clientList.clearSelection();
+		listView.clientTableModel.ReloadClientTable(model.list());
+		listView.clientList.clearSelection();
 		//update view
-		clientListView.scrollableClientList.repaint();
-		clientListView.invalidate();
-		clientListView.validate();
+		listView.scrollableClientList.repaint();
+		listView.invalidate();
+		listView.validate();
 	}
 	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
@@ -88,22 +89,22 @@ public class ClientController
 	
 	public void Insert()
 	{
-		String name = clientAddView.nameField.getText();
-		String surname = clientAddView.surnameField.getText();
+		String name = addView.nameField.getText();
+		String surname = addView.surnameField.getText();
 		long pesel = 0;
 		String peselAsString = "0";
 		try
 		{
-			pesel = Long.parseLong(clientAddView.peselField.getText());
-			peselAsString = clientAddView.peselField.getText();
+			pesel = Long.parseLong(addView.peselField.getText());
+			peselAsString = addView.peselField.getText();
 		}
 		catch(Exception e)
 		{
 			pesel = 0;
 			peselAsString = "0";
 		}
-		String city = clientAddView.cityField.getText();
-		String street = clientAddView.streetField.getText();
+		String city = addView.cityField.getText();
+		String street = addView.streetField.getText();
 		
 		//REGEX VALIDATION
 		Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
@@ -140,67 +141,67 @@ public class ClientController
 			int tempId = 0;
 			Client client = new Client(tempId, name, surname, pesel, city, street);
 			
-			clientModel.insert(client);
+			model.insert(client);
 			
-			clientAddView.nameField.setText("");
-			clientAddView.surnameField.setText("");
-			clientAddView.peselField.setText("");
-			clientAddView.cityField.setText("");
-			clientAddView.streetField.setText("");
+			addView.nameField.setText("");
+			addView.surnameField.setText("");
+			addView.peselField.setText("");
+			addView.cityField.setText("");
+			addView.streetField.setText("");
 			
-			clientAddView.DisplaySuccessPopup();
+			addView.DisplaySuccessPopup();
 		}
 		else
 		{
-			clientAddView.DisplayErrorPopup(errorMessage);
+			addView.DisplayErrorPopup(errorMessage);
 		}	
 	}
 	
 	public void Delete()
 	{
-		int selectedRow = clientListView.clientList.getSelectedRow();
+		int selectedRow = listView.clientList.getSelectedRow();
 		//RETURN IF NO ROW SELECTED
 		if(selectedRow == -1)
 			return;
 		
-		Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
+		Client selectedClient = listView.clientTableModel.getClient(selectedRow);
 		
 		//CONFIRMATION POPUP
-		if(clientListView.DisplayRemoveConfirmationPopup() == true)
+		if(listView.DisplayRemoveConfirmationPopup() == true)
 		{
-			clientModel.delete(selectedClient);
+			model.delete(selectedClient);
 		}
 		RefreshView();
 	}
 	
 	public void Update()
 	{
-		int selectedRow = clientListView.clientList.getSelectedRow();
+		int selectedRow = listView.clientList.getSelectedRow();
 		//RETURN IF NO ROW SELECTED
 		if(selectedRow == -1)
 			return;
 		
-		Client selectedClient = clientListView.clientTableModel.getClient(selectedRow);
+		Client selectedClient = listView.clientTableModel.getClient(selectedRow);
 		
 		// FILL POPUP FIELDS WITH SELECTED ITEM DATA
-		clientEditView.nameField.setText(selectedClient.getName());
-		clientEditView.surnameField.setText(selectedClient.getSurname());
-		clientEditView.peselField.setText(String.valueOf(selectedClient.getPesel()));
-		clientEditView.cityField.setText(selectedClient.getCity());
-		clientEditView.streetField.setText(selectedClient.getStreet());
+		editView.nameField.setText(selectedClient.getName());
+		editView.surnameField.setText(selectedClient.getSurname());
+		editView.peselField.setText(String.valueOf(selectedClient.getPesel()));
+		editView.cityField.setText(selectedClient.getCity());
+		editView.streetField.setText(selectedClient.getStreet());
 		
-		boolean itemModified = clientEditView.DisplayPopup();
+		boolean itemModified = editView.DisplayPopup();
 		
 		if(itemModified == true)
 		{
 			//GET NEW DATA FROM POPUP
-			String name = clientEditView.nameField.getText();
-			String surname = clientEditView.surnameField.getText();
+			String name = editView.nameField.getText();
+			String surname = editView.surnameField.getText();
 			long pesel = 0;
 			String peselAsString = "0";
 			try
 			{
-				pesel = Long.parseLong(clientEditView.peselField.getText());
+				pesel = Long.parseLong(editView.peselField.getText());
 				peselAsString = String.valueOf(pesel);
 			}
 			catch(Exception e)
@@ -208,8 +209,8 @@ public class ClientController
 				pesel = 0;
 				peselAsString = "0";
 			}
-			String city = clientEditView.cityField.getText();
-			String street = clientEditView.streetField.getText();
+			String city = editView.cityField.getText();
+			String street = editView.streetField.getText();
 			
 			//REGEX VALIDATION
 			Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
@@ -249,13 +250,13 @@ public class ClientController
 				selectedClient.setCity(city);
 				selectedClient.setStreet(street);
 				
-				clientModel.update(selectedClient);
+				model.update(selectedClient);
 				
-				clientEditView.DisplaySuccessPopup();
+				editView.DisplaySuccessPopup();
 			}
 			else
 			{
-				clientEditView.DisplayErrorPopup(errorMessage);
+				editView.DisplayErrorPopup(errorMessage);
 			}	
 			RefreshView();
 		}
@@ -263,17 +264,17 @@ public class ClientController
 	
 	public void Find()
 	{
-		String rowName = (String) clientSearchView.searchRowCombo.getSelectedItem();
-		String rowValue = clientSearchView.searchValueField.getText();
+		String rowName = (String) searchView.searchRowCombo.getSelectedItem();
+		String rowValue = searchView.searchValueField.getText();
 		
-		Client foundClient = clientModel.find(rowName, rowValue);
+		Client foundClient = model.find(rowName, rowValue);
 		if(foundClient != null)
 		{
-			clientSearchView.DisplayResultPopup(foundClient);
+			searchView.DisplayResultPopup(foundClient);
 		}
 		else
 		{
-			clientSearchView.DisplayNoResultPopup();
+			searchView.DisplayNoResultPopup();
 		}	
 	}
 	

@@ -40,8 +40,8 @@ public class MainController
 		this.clientSearchView = new ClientSearchView();
 		
 		this.clientController = new ClientController(clientAddView, clientListView, clientEditView, clientSearchView);
-		clientAddView.ClientAddSubmitListener(clientController.clientAddSubmitListener);
-		clientSearchView.ClientSearchSubmitListener(clientController.clientSearchSubmitListener);
+		clientAddView.ClientAddSubmitListener(clientController.addSubmitListener);
+		clientSearchView.ClientSearchSubmitListener(clientController.searchSubmitListener);
 		
 		mainView.ClientAddListener(new ClientAddListener());
 		mainView.ClientListListener(new ClientListListener());
