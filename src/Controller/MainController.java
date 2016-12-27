@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import Model.Client;
 import Model.ClientModel;
 import Model.ClientTableModel;
+import Model.Position;
 import Model.PositionModel;
 import Model.PositionTableModel;
 
@@ -93,7 +94,10 @@ public class MainController
 		clientModel.insert(new Client(5, "Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11"));
 		
 		//EXAMPLE POSITIONS
-		
+		positionModel.insert(new Position(1, "Sprzedawca", 2500));
+		positionModel.insert(new Position(2, "Ksiegowy", 3500));
+		positionModel.insert(new Position(3, "Manager", 8000));
+		positionModel.insert(new Position(4, "Stazysta", 1200));
 		
 		//EXAMPLE WORKERS
 		
