@@ -117,6 +117,9 @@ public class PositionModel extends Database
 				case "title":
 					selectStatement.setString(1, value);
 					break;
+				case "id_position":
+					selectStatement.setInt(1, Integer.parseInt(value));
+					break;
 				default:
 					selectStatement.setString(1, "title");
 					break;

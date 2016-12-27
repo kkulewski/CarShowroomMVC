@@ -73,7 +73,11 @@ public class WorkerTableModel extends AbstractTableModel
             case 2: return worker.getPesel();
             case 3: return worker.getCity();
             case 4: return worker.getStreet();
-            case 5: return worker.getId_position();
+            case 5:
+        		PositionModel positionModel = new PositionModel();
+        		int positionId = worker.getId_position();
+        		Position foundPosition = positionModel.find("id_position", String.valueOf(positionId));
+            	return foundPosition.getTitle();
             default: return null;
         }
     }
