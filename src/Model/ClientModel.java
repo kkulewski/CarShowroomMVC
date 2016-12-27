@@ -117,37 +117,37 @@ public class ClientModel extends Database
 	{
 		try
 		{
-			String selectQuery = "SELECT * FROM "+tableName+" WHERE "+columnName+" = ?;";
-			PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+			String query = "SELECT * FROM "+tableName+" WHERE "+columnName+" = ?;";
+			PreparedStatement selectStatement = conn.prepareStatement(query);
 			
 			//row type is based on rowName
 			switch(columnName)
 			{
-			case "name":
-				selectStatement.setString(1, value);
-				break;
-			case "surname":
-				selectStatement.setString(1, value);
-				break;
-			case "pesel":
-				try 
-				{
-					selectStatement.setLong(1, Long.parseLong(value));	
-				}
-				catch(Exception e)
-				{
-					selectStatement.setLong(1, 0L);
-				}
-				break;
-			case "city":
-				selectStatement.setString(1, value);
-				break;
-			case "street":
-				selectStatement.setString(1, value);
-				break;
-			default:
-				selectStatement.setString(1, "name");
-				break;
+				case "name":
+					selectStatement.setString(1, value);
+					break;
+				case "surname":
+					selectStatement.setString(1, value);
+					break;
+				case "pesel":
+					try 
+					{
+						selectStatement.setLong(1, Long.parseLong(value));	
+					}
+					catch(Exception e)
+					{
+						selectStatement.setLong(1, 0L);
+					}
+					break;
+				case "city":
+					selectStatement.setString(1, value);
+					break;
+				case "street":
+					selectStatement.setString(1, value);
+					break;
+				default:
+					selectStatement.setString(1, "name");
+					break;
 			}
 			
 			ResultSet result = selectStatement.executeQuery();
