@@ -3,13 +3,19 @@ package View;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
+import Model.Position;
+import Model.PositionModel;
 
 public class WorkerAddView extends JPanel
 {
@@ -28,6 +34,9 @@ public class WorkerAddView extends JPanel
 	//STREET
 	public JTextField streetField = new JTextField(20);
 	JLabel streetLabel = new JLabel("Street:");
+	//POSITION
+	public JComboBox<String> positionCombo;
+	JLabel positionLabel = new JLabel("Position:");
 	//SUBMIT BUTTON
 	public JButton submitButton = new JButton("Add");
 	
@@ -56,6 +65,22 @@ public class WorkerAddView extends JPanel
 		//STREET
 		dataPanel.add(streetLabel);
 		dataPanel.add(streetField);
+		
+		//POSITION
+		dataPanel.add(positionLabel);
+		PositionModel positionModel = new PositionModel();
+		ArrayList<Position> positionList = new ArrayList<Position>();
+		positionList = positionModel.list();
+		
+	    positionCombo = new JComboBox<String>();
+	    for(Position p : positionList)
+	    {
+	    	positionCombo.addItem(p.getTitle());
+	    }
+	    positionCombo.setSelectedIndex(0);
+	    JScrollPane positionScrollPane = new JScrollPane(positionCombo);    
+		dataPanel.add(positionScrollPane);
+		
 		this.add(dataPanel);
 		
 		

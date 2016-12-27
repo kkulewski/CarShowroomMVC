@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Model.Position;
+import Model.PositionModel;
 import Model.Worker;
 import Model.WorkerModel;
 import View.WorkerAddView;
@@ -104,6 +106,11 @@ public class WorkerController
 		}
 		String city = addView.cityField.getText();
 		String street = addView.streetField.getText();
+		//POSITION FROM COMBOBOX
+		PositionModel positionModel = new PositionModel();
+		String selectedPosition = (String)addView.positionCombo.getSelectedItem();
+		Position foundPosition = positionModel.find("title", selectedPosition);
+		int positionId = foundPosition.getId();
 		
 		//REGEX VALIDATION
 		Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
@@ -138,8 +145,7 @@ public class WorkerController
 		if(dataIsValid == true)
 		{
 			int tempId = 0;
-			int tempIdPosition = 0;
-			Worker worker = new Worker(tempId, name, surname, pesel, city, street, tempIdPosition);
+			Worker worker = new Worker(tempId, name, surname, pesel, city, street, positionId);
 			
 			model.insert(worker);
 			
