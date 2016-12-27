@@ -182,11 +182,11 @@ public class CarController
 			//GET NEW DATA FROM POPUP
 			String brand = editView.brandField.getText();
 			String car_model = editView.modelField.getText();
-			long price = 0;
+			double price = 0;
 			String priceAsString = "0";
 			try
 			{
-				price = Long.parseLong(editView.priceField.getText());
+				price = Double.parseDouble(editView.priceField.getText());
 				priceAsString = String.valueOf(price);
 			}
 			catch(Exception e)
