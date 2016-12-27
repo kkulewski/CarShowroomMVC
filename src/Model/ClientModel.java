@@ -10,7 +10,7 @@ public class ClientModel extends Database
 {
 	private String tableName = "client";
 	
-	public boolean insertClient(Client client)
+	public boolean insert(Client row)
 	{
 		
 		try
@@ -18,11 +18,11 @@ public class ClientModel extends Database
 			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?, ?, ?, ?);";
 			PreparedStatement insertStatement = conn.prepareStatement(query);
 			
-			insertStatement.setString(1, client.getName());
-			insertStatement.setString(2, client.getSurname());
-			insertStatement.setLong(3, client.getPesel());
-			insertStatement.setString(4, client.getCity());
-			insertStatement.setString(5, client.getStreet());
+			insertStatement.setString(1, row.getName());
+			insertStatement.setString(2, row.getSurname());
+			insertStatement.setLong(3, row.getPesel());
+			insertStatement.setString(4, row.getCity());
+			insertStatement.setString(5, row.getStreet());
 			
 			insertStatement.execute();
 			insertStatement.close();
@@ -35,14 +35,14 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	public boolean deleteClient(Client client)
+	public boolean delete(Client row)
 	{
 		try
 		{
 			String query = "DELETE FROM "+tableName+" WHERE id_"+tableName+" = ?;";
 			PreparedStatement deleteStatement = conn.prepareStatement(query);
 			
-			deleteStatement.setInt(1, client.getId());
+			deleteStatement.setInt(1, row.getId());
 			
 			deleteStatement.execute();
 			deleteStatement.close();
@@ -55,7 +55,7 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	public boolean updateClient(Client client)
+	public boolean update(Client row)
 	{
 		
 		try
@@ -63,12 +63,12 @@ public class ClientModel extends Database
 			String query = "UPDATE "+tableName+" SET name = ?, surname = ?, pesel = ?, city = ?, street = ? WHERE id_"+tableName+" = ?;";
 			PreparedStatement updateStatement = conn.prepareStatement(query);
 			
-			updateStatement.setString(1, client.getName());
-			updateStatement.setString(2, client.getSurname());
-			updateStatement.setLong(3, client.getPesel());
-			updateStatement.setString(4, client.getCity());
-			updateStatement.setString(5, client.getStreet());
-			updateStatement.setInt(6, client.getId());
+			updateStatement.setString(1, row.getName());
+			updateStatement.setString(2, row.getSurname());
+			updateStatement.setLong(3, row.getPesel());
+			updateStatement.setString(4, row.getCity());
+			updateStatement.setString(5, row.getStreet());
+			updateStatement.setInt(6, row.getId());
 			
 			updateStatement.execute();
 			updateStatement.close();
@@ -81,7 +81,7 @@ public class ClientModel extends Database
 		return true;
 	}
 	
-	public ArrayList<Client> listClient()
+	public ArrayList<Client> list()
 	{
 		ArrayList<Client> rowList = new ArrayList<Client>();
 		
@@ -92,7 +92,7 @@ public class ClientModel extends Database
 	        
 	        while(result.next()) 
 	        {
-	        	Client client = new Client
+	        	Client row = new Client
 	            		(
 	            			result.getInt("id_client"), 
 	            			result.getString("name"), 
@@ -101,7 +101,7 @@ public class ClientModel extends Database
 	            			result.getString("city"), 
 	            			result.getString("street")
 	            		);
-	            rowList.add(client);
+	            rowList.add(row);
 	        }
 	        result.close();
 	    } 
@@ -113,7 +113,7 @@ public class ClientModel extends Database
 	    return rowList;
 	}
 	
-	public Client findClient(String columnName, String value)
+	public Client find(String columnName, String value)
 	{
 		try
 		{

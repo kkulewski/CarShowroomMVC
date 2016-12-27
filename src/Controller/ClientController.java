@@ -41,7 +41,7 @@ public class ClientController
 	public void RefreshView()
 	{
 		//reload clientTable data from DB
-		clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
+		clientListView.clientTableModel.ReloadClientTable(clientModel.list());
 		clientListView.clientList.clearSelection();
 		//update view
 		clientListView.scrollableClientList.repaint();
@@ -51,17 +51,17 @@ public class ClientController
 	
 	public void InsertClient(Client client)
 	{
-		clientModel.insertClient(client);
+		clientModel.insert(client);
 	}
 	
 	public void DeleteClient(Client client)
 	{
-		clientModel.deleteClient(client);
+		clientModel.delete(client);
 	}
 	
 	public void UpdateClient(Client client)
 	{
-		clientModel.updateClient(client);
+		clientModel.update(client);
 	}
 	
 	//TODO: BETTER NAMING FOR EVENT HANDLERS
@@ -265,7 +265,7 @@ public class ClientController
 			String rowName = (String) clientSearchView.searchRowCombo.getSelectedItem();
 			String rowValue = clientSearchView.searchValueField.getText();
 			
-			Client foundClient = clientModel.findClient(rowName, rowValue);
+			Client foundClient = clientModel.find(rowName, rowValue);
 			if(foundClient != null)
 			{
 				clientSearchView.DisplayResultPopup(foundClient);

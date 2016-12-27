@@ -34,7 +34,7 @@ public class MainController
 		
 		this.clientModel = new ClientModel();
 		this.clientAddView = new ClientAddView();
-		this.clientTableModel = new ClientTableModel(clientModel.listClient());
+		this.clientTableModel = new ClientTableModel(clientModel.list());
 		this.clientListView = new ClientListView(clientTableModel);
 		this.clientEditView = new ClientEditView();
 		this.clientSearchView = new ClientSearchView();
@@ -56,11 +56,11 @@ public class MainController
 	public void FillWithTestData()
 	{
 		//EXAMPLE CLIENTS
-		clientModel.insertClient(new Client(1, "Jan", "Kowalski", 12233455666L, "Warszawa", "Dluga 3"));
-		clientModel.insertClient(new Client(2, "Janusz", "Nowak", 87213452266L, "Gdansk", "Krotka 4a"));
-		clientModel.insertClient(new Client(3, "Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70"));
-		clientModel.insertClient(new Client(4, "Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A"));
-		clientModel.insertClient(new Client(5, "Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11"));
+		clientModel.insert(new Client(1, "Jan", "Kowalski", 12233455666L, "Warszawa", "Dluga 3"));
+		clientModel.insert(new Client(2, "Janusz", "Nowak", 87213452266L, "Gdansk", "Krotka 4a"));
+		clientModel.insert(new Client(3, "Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70"));
+		clientModel.insert(new Client(4, "Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A"));
+		clientModel.insert(new Client(5, "Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11"));
 		
 		//EXAMPLE POSITIONS
 		
@@ -94,7 +94,7 @@ public class MainController
 		{
 			//TODO: make TableModel update itself
 			//HACK - update data in TableModel (flush and load from db)
-			clientListView.clientTableModel.ReloadClientTable(clientModel.listClient());
+			clientListView.clientTableModel.ReloadClientTable(clientModel.list());
 			//HACK
 			
 			mainView.setContentPane(clientListView);
