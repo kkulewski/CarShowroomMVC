@@ -1,14 +1,14 @@
 package Model;
 
-import java.util.Currency;
+import java.math.BigDecimal;
 
 public class Position 
 {
 	private int id;
 	private String title;
-	private Currency salary;
+	private BigDecimal salary;
 	
-	public Position(int id, String title, Currency salary) {
+	public Position(int id, String title, BigDecimal salary) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -27,10 +27,10 @@ public class Position
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Currency getSalary() {
+	public BigDecimal getSalary() {
 		return salary;
 	}
-	public void setSalary(Currency salary) {
+	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
 }
