@@ -40,7 +40,6 @@ public class ClientModel extends Database
 		try
 		{
 			String query = "DELETE FROM "+tableName+" WHERE id_"+tableName+" = ?;";
-			
 			PreparedStatement deleteStatement = conn.prepareStatement(query);
 			
 			deleteStatement.setInt(1, client.getId());
@@ -84,11 +83,12 @@ public class ClientModel extends Database
 	
 	public ArrayList<Client> listClient()
 	{
-		ArrayList<Client> clientList = new ArrayList<Client>();
+		ArrayList<Client> rowList = new ArrayList<Client>();
 		
 	    try 
 	    {
-	        ResultSet result = stat.executeQuery("SELECT * FROM "+tableName+";");
+	    	String query = "SELECT * FROM "+tableName+";";
+	        ResultSet result = stat.executeQuery(query);
 	        
 	        while(result.next()) 
 	        {
@@ -101,7 +101,7 @@ public class ClientModel extends Database
 	            			result.getString("city"), 
 	            			result.getString("street")
 	            		);
-	            clientList.add(client);
+	            rowList.add(client);
 	        }
 	        result.close();
 	    } 
@@ -110,7 +110,7 @@ public class ClientModel extends Database
 	        e.printStackTrace();
 	        return null;
 	    }
-	    return clientList;
+	    return rowList;
 	}
 	
 	public Client findClient(String columnName, String value)
