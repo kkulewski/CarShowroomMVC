@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import Model.Position;
+import Model.PositionModel;
 import Model.Worker;
 
 public class WorkerSearchView extends JPanel
@@ -119,6 +121,16 @@ public class WorkerSearchView extends JPanel
 		streetField.setEditable(false);
 		panel.add(streetLabel);
 		panel.add(streetField);
+		
+		//POSITION
+		JLabel positionLabel = new JLabel("Position:");
+		JTextField positionField = new JTextField();
+		PositionModel positionModel = new PositionModel();
+		Position workerPosition = positionModel.find("id_position", String.valueOf(foundWorker.getId_position()));
+		positionField.setText(workerPosition.getTitle());
+		positionField.setEditable(false);
+		panel.add(positionLabel);
+		panel.add(positionField);
 		
 		JOptionPane.showConfirmDialog(null, panel, "Result found", JOptionPane.PLAIN_MESSAGE);
 	}
