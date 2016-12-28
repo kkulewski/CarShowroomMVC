@@ -133,6 +133,9 @@ public class CarModel extends Database
 						selectStatement.setLong(1, 0L);
 					}
 					break;
+				case "id_car":
+					selectStatement.setInt(1, Integer.parseInt(value));
+					break;
 				default:
 					selectStatement.setString(1, "brand");
 					break;
