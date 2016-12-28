@@ -19,7 +19,7 @@ public class MainView extends JFrame
 	public MainView()
 	{
 		
-		this.setSize(new Dimension(600,400));
+		this.setSize(new Dimension(600,640));
 		this.setLayout(new GridLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Car Showroom");

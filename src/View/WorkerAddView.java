@@ -45,7 +45,7 @@ public class WorkerAddView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new GridLayout(3,1));
 		
 		//DATA
 		JPanel dataPanel = new JPanel();
@@ -59,15 +59,21 @@ public class WorkerAddView extends JPanel
 		//PESEL
 		dataPanel.add(peselLabel);
 		dataPanel.add(peselField);
+		this.add(dataPanel);
+		
+		
+		//DATA2
+		JPanel dataPanel2 = new JPanel();
+		dataPanel2.setLayout(new GridLayout(0,1));
 		//CITY
-		dataPanel.add(cityLabel);
-		dataPanel.add(cityField);
+		dataPanel2.add(cityLabel);
+		dataPanel2.add(cityField);
 		//STREET
-		dataPanel.add(streetLabel);
-		dataPanel.add(streetField);
+		dataPanel2.add(streetLabel);
+		dataPanel2.add(streetField);
 		
 		//POSITION
-		dataPanel.add(positionLabel);
+		dataPanel2.add(positionLabel);
 		PositionModel positionModel = new PositionModel();
 		ArrayList<Position> positionList = new ArrayList<Position>();
 		positionList = positionModel.list();
@@ -78,9 +84,9 @@ public class WorkerAddView extends JPanel
 	    	positionCombo.addItem(p.getTitle());
 	    }
 	    JScrollPane positionScrollPane = new JScrollPane(positionCombo);    
-		dataPanel.add(positionScrollPane);
+		dataPanel2.add(positionScrollPane);
 		
-		this.add(dataPanel);
+		this.add(dataPanel2);
 		
 		
 		//BUTTONS

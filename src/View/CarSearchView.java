@@ -33,7 +33,7 @@ public class CarSearchView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridLayout(2, 1));
+		this.setLayout(new GridLayout(3, 1));
 		  
 	      
 		//DATA
@@ -55,7 +55,19 @@ public class CarSearchView extends JPanel
 		searchValueField = new JTextField(70);
 		dataPanel.add(searchValueField);
 		
+
+		//PADDING
+		JLabel empty1 = new JLabel(" ");
+		JLabel empty2 = new JLabel(" ");
+		dataPanel.add(empty1);
+		dataPanel.add(empty2);
+		
 		this.add(dataPanel);
+		
+		//DATA2
+		JPanel dataPanel2 = new JPanel();
+		dataPanel.setLayout(new GridLayout(0,1));
+		this.add(dataPanel2);
 		
 		//BUTTONS
 		JPanel buttonPanel = new JPanel();

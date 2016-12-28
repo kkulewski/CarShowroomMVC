@@ -36,7 +36,7 @@ public class ClientAddView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new GridLayout(3,1));
 		
 		//DATA
 		JPanel dataPanel = new JPanel();
@@ -50,14 +50,23 @@ public class ClientAddView extends JPanel
 		//PESEL
 		dataPanel.add(peselLabel);
 		dataPanel.add(peselField);
-		//CITY
-		dataPanel.add(cityLabel);
-		dataPanel.add(cityField);
-		//STREET
-		dataPanel.add(streetLabel);
-		dataPanel.add(streetField);
 		this.add(dataPanel);
 		
+		//DATA2
+		JPanel dataPanel2 = new JPanel();
+		dataPanel2.setLayout(new GridLayout(0,1));
+		//CITY
+		dataPanel2.add(cityLabel);
+		dataPanel2.add(cityField);
+		//STREET
+		dataPanel2.add(streetLabel);
+		dataPanel2.add(streetField);
+		//PADDING
+		JLabel empty1 = new JLabel(" ");
+		JLabel empty2 = new JLabel(" ");
+		dataPanel2.add(empty1);
+		dataPanel2.add(empty2);
+		this.add(dataPanel2);
 		
 		//BUTTONS
 		JPanel buttonPanel = new JPanel();

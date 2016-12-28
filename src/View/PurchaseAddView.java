@@ -45,7 +45,7 @@ public class PurchaseAddView extends JPanel
 		this.setVisible(true);
 		Color backgroundColor = new Color(100, 200, 0);
 		this.setBackground(backgroundColor);
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new GridLayout(3,1));
 		
 		//DATA
 		JPanel dataPanel = new JPanel();
@@ -78,7 +78,7 @@ public class PurchaseAddView extends JPanel
 	    }
 	    JScrollPane workerScrollPane = new JScrollPane(workerCombo);    
 		dataPanel.add(workerScrollPane);
-				
+
 		//POSITION
 		dataPanel.add(carLabel);
 		CarModel carModel = new CarModel();
@@ -92,12 +92,23 @@ public class PurchaseAddView extends JPanel
 	    }
 	    JScrollPane carScrollPane = new JScrollPane(carCombo);    
 		dataPanel.add(carScrollPane);
+		this.add(dataPanel);		
 		
-		dataPanel.add(transaction_dateLabel);
-		dataPanel.add(transaction_dateField);
-		
-		this.add(dataPanel);
-		
+		//DATA2
+		JPanel dataPanel2 = new JPanel();
+		dataPanel2.setLayout(new GridLayout(0,1));
+		dataPanel2.add(transaction_dateLabel);
+		dataPanel2.add(transaction_dateField);
+		//PADDING
+		JLabel empty1 = new JLabel(" ");
+		JLabel empty2 = new JLabel(" ");
+		JLabel empty3 = new JLabel(" ");
+		JLabel empty4 = new JLabel(" ");
+		dataPanel2.add(empty1);
+		dataPanel2.add(empty2);
+		dataPanel2.add(empty3);
+		dataPanel2.add(empty4);
+		this.add(dataPanel2);
 		
 		//BUTTONS
 		JPanel buttonPanel = new JPanel();
