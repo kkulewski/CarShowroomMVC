@@ -118,7 +118,7 @@ public class PurchaseController
 		String transaction_date = addView.transaction_dateField.getText();
 		
 		//REGEX VALIDATION
-		Pattern transaction_datePattern = Pattern.compile("[1-2][1-9][1-9][1-9][-][0-1][0-9][-][0-3][0-9]");
+		Pattern transaction_datePattern = Pattern.compile("[1-2][0-9][0-9][0-9].[0-1][0-9].[0-3][0-9]");
 		 
 		Matcher transaction_dateMatcher = transaction_datePattern.matcher(transaction_date);
 		
@@ -252,7 +252,7 @@ public class PurchaseController
 			carId = foundCar.getId();
 			
 			//REGEX VALIDATION
-			Pattern transaction_datePattern = Pattern.compile("[1-2][1-9][1-9][1-9][-][0-1][0-9][-][0-3][0-9]");
+			Pattern transaction_datePattern = Pattern.compile("[1-2][0-9][0-9][0-9].[0-1][0-9].[0-3][0-9]");
 			 
 			Matcher transaction_dateMatcher = transaction_datePattern.matcher(transaction_dateAsString);
 			
