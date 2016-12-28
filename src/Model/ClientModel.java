@@ -145,6 +145,9 @@ public class ClientModel extends Database
 				case "street":
 					selectStatement.setString(1, value);
 					break;
+				case "id_client":
+					selectStatement.setInt(1, Integer.parseInt(value));
+					break;
 				default:
 					selectStatement.setString(1, "name");
 					break;
