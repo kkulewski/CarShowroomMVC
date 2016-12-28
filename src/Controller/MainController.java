@@ -1,6 +1,7 @@
 package Controller;
 
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import Model.Client;
 import Model.ClientModel;
@@ -8,6 +9,9 @@ import Model.ClientTableModel;
 import Model.Position;
 import Model.PositionModel;
 import Model.PositionTableModel;
+import Model.Purchase;
+import Model.PurchaseModel;
+import Model.PurchaseTableModel;
 import Model.Car;
 import Model.CarModel;
 import Model.CarTableModel;
@@ -26,6 +30,10 @@ import View.PositionAddView;
 import View.PositionEditView;
 import View.PositionListView;
 import View.PositionSearchView;
+import View.PurchaseAddView;
+import View.PurchaseEditView;
+import View.PurchaseListView;
+import View.PurchaseSearchView;
 import View.CarAddView;
 import View.CarEditView;
 import View.CarListView;
@@ -75,6 +83,14 @@ public class MainController
 	public WorkerModel workerModel;
 	private WorkerTableModel workerTableModel;
 
+	private PurchaseController purchaseController;
+	private PurchaseAddView purchaseAddView;
+	private PurchaseListView purchaseListView;
+	private PurchaseEditView purchaseEditView;
+	private PurchaseSearchView purchaseSearchView;
+	
+	public PurchaseModel purchaseModel;
+	private PurchaseTableModel purchaseTableModel;
 	
 	public MainController(MainView mainView)
 	{
@@ -139,6 +155,22 @@ public class MainController
 		mainView.WorkerAddListener(new WorkerAddListener());
 		mainView.WorkerListListener(new WorkerListListener());
 		mainView.WorkerSearchListener(new WorkerSearchListener());
+
+		this.purchaseModel = new PurchaseModel();
+		this.purchaseAddView = new PurchaseAddView();
+		this.purchaseTableModel = new PurchaseTableModel(purchaseModel.list());
+		this.purchaseListView = new PurchaseListView(purchaseTableModel);
+		this.purchaseEditView = new PurchaseEditView();
+		this.purchaseSearchView = new PurchaseSearchView();
+		
+		this.purchaseController = new PurchaseController(purchaseAddView, purchaseListView, purchaseEditView, purchaseSearchView);
+		purchaseAddView.PurchaseAddSubmitListener(purchaseController.addSubmitListener);
+		purchaseSearchView.PurchaseSearchSubmitListener(purchaseController.searchSubmitListener);
+		
+		mainView.PurchaseAddListener(new PurchaseAddListener());
+		mainView.PurchaseListListener(new PurchaseListListener());
+		mainView.PurchaseSearchListener(new PurchaseSearchListener());
+	
 	}
 	
 	public void Run()
@@ -174,6 +206,9 @@ public class MainController
 		carModel.insert(new Car(4, "Audi", "A3", 125000));
 		
 		//EXAMPLE PURHCASES
+		purchaseModel.insert(new Purchase(1, 1, 1, 1, Date.valueOf("2000-01-01")));
+		purchaseModel.insert(new Purchase(2, 2, 1, 2, Date.valueOf("2010-10-10")));
+		purchaseModel.insert(new Purchase(3, 3, 4, 3, Date.valueOf("2005-05-05")));
 	}
 	
 	
@@ -325,6 +360,44 @@ public class MainController
 		public void actionPerformed(ActionEvent arg0) 
 		{	
 			mainView.setContentPane(workerSearchView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class PurchaseAddListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{		
+			mainView.setContentPane(purchaseAddView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class PurchaseListListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{
+			//TODO: make TableModel update itself
+			//HACK - update data in TableModel (flush and load from db)
+			purchaseListView.purchaseTableModel.ReloadPurchaseTable(purchaseModel.list());
+			//HACK
+			
+			mainView.setContentPane(purchaseListView);
+			mainView.invalidate();
+			mainView.validate();
+		}
+	}
+	
+	class PurchaseSearchListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			mainView.setContentPane(purchaseSearchView);
 			mainView.invalidate();
 			mainView.validate();
 		}
