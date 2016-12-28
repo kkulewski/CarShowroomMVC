@@ -205,10 +205,10 @@ public class MainController
 		carModel.insert(new Car(3, "VW", "Passat", 160000));
 		carModel.insert(new Car(4, "Audi", "A3", 125000));
 		
-		//EXAMPLE PURHCASES
+		//EXAMPLE PURCHASES
 		purchaseModel.insert(new Purchase(1, 1, 1, 1, Date.valueOf("2000-01-01")));
 		purchaseModel.insert(new Purchase(2, 2, 1, 2, Date.valueOf("2010-10-10")));
-		purchaseModel.insert(new Purchase(3, 3, 4, 3, Date.valueOf("2005-05-05")));
+		purchaseModel.insert(new Purchase(3, 3, 3, 3, Date.valueOf("2005-05-05")));
 	}
 	
 	
