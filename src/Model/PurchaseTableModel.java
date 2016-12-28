@@ -71,16 +71,34 @@ public class PurchaseTableModel extends AbstractTableModel
             	ClientModel clientModel = new ClientModel();
             	int clientId = purchase.getId_client();
             	Client foundClient = clientModel.find("id_client", String.valueOf(clientId));
+            	if(foundClient == null)
+            	{
+            		PurchaseModel purchaseModel = new PurchaseModel();
+            		purchaseModel.delete(purchase);
+            		return "#OUTDATED!#";
+            	}
             	return foundClient.getSurname();
             case 1:
             	WorkerModel workerModel = new WorkerModel();
             	int workerId = purchase.getId_worker();
             	Worker foundWorker = workerModel.find("id_worker", String.valueOf(workerId));
+            	if(foundWorker == null)
+            	{
+            		PurchaseModel purchaseModel = new PurchaseModel();
+            		purchaseModel.delete(purchase);
+            		return "#OUTDATED!#";
+            	}
             	return foundWorker.getSurname();
             case 2: 
             	CarModel carModel = new CarModel();
             	int carId = purchase.getId_car();
             	Car foundCar = carModel.find("id_car", String.valueOf(carId));
+            	if(foundCar == null)
+            	{
+            		PurchaseModel purchaseModel = new PurchaseModel();
+            		purchaseModel.delete(purchase);
+            		return "#OUTDATED!#";
+            	}
             	return foundCar.getModel();
             case 3: 
             	return purchase.getTransaction_date();
