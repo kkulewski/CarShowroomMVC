@@ -1,12 +1,18 @@
 package View;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
+import Model.Position;
+import Model.PositionModel;
 
 public class WorkerEditView
 {
@@ -27,6 +33,9 @@ public class WorkerEditView
     //STREET
 	JLabel streetLabel = new JLabel("Street:");
     public JTextField streetField = new JTextField();
+    //POSITION
+    JLabel positionLabel = new JLabel("Position:");
+    public JComboBox positionCombo;
     
     public WorkerEditView()
     {
@@ -44,6 +53,12 @@ public class WorkerEditView
         
         panel.add(streetLabel);
         panel.add(streetField);
+        
+		//POSITION
+        panel.add(positionLabel);
+	    positionCombo = new JComboBox<String>();
+	    JScrollPane positionScrollPane = new JScrollPane(positionCombo);    
+		panel.add(positionScrollPane);
     }
 	
 	

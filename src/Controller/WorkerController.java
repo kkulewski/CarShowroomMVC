@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JComboBox;
+
 import Model.Position;
 import Model.PositionModel;
 import Model.Worker;
@@ -196,6 +198,21 @@ public class WorkerController
 		editView.cityField.setText(selectedWorker.getCity());
 		editView.streetField.setText(selectedWorker.getStreet());
 		
+
+		PositionModel positionModel = new PositionModel();
+		ArrayList<Position> positionList = new ArrayList<Position>();
+		positionList = positionModel.list();
+		this.editView.positionCombo.removeAllItems();
+	    for(Position p : positionList)
+	    {
+	    	this.editView.positionCombo.addItem(p.getTitle());
+	    }
+	    int worker_positionId = selectedWorker.getId_position();
+	    int positionId = worker_positionId;
+	    Position worker_position = positionModel.find("id_position", String.valueOf(worker_positionId));
+	    String worker_positionTitle = worker_position.getTitle();
+	    this.editView.positionCombo.setSelectedItem(worker_positionTitle);
+		
 		boolean itemModified = editView.DisplayPopup();
 		
 		if(itemModified == true)
@@ -217,6 +234,10 @@ public class WorkerController
 			}
 			String city = editView.cityField.getText();
 			String street = editView.streetField.getText();
+			//POSITION FROM COMBOBOX
+			String selectedPosition = (String)editView.positionCombo.getSelectedItem();
+			Position foundPosition = positionModel.find("title", selectedPosition);
+			positionId = foundPosition.getId();
 			
 			//REGEX VALIDATION
 			Pattern namePattern = Pattern.compile("[A-Z][a-z]{1,19}");
@@ -255,6 +276,7 @@ public class WorkerController
 				selectedWorker.setPesel(pesel);
 				selectedWorker.setCity(city);
 				selectedWorker.setStreet(street);
+				selectedWorker.setId_position(positionId);
 				
 				model.update(selectedWorker);
 				
