@@ -62,7 +62,6 @@ public class PurchaseAddView extends JPanel
 	    {
 	    	clientCombo.addItem(c.getSurname());
 	    }
-	    clientCombo.setSelectedIndex(0);
 	    JScrollPane clientScrollPane = new JScrollPane(clientCombo);    
 		dataPanel.add(clientScrollPane);
 		
@@ -77,7 +76,6 @@ public class PurchaseAddView extends JPanel
 	    {
 	    	workerCombo.addItem(w.getSurname());
 	    }
-	    workerCombo.setSelectedIndex(0);
 	    JScrollPane workerScrollPane = new JScrollPane(workerCombo);    
 		dataPanel.add(workerScrollPane);
 				
@@ -92,9 +90,11 @@ public class PurchaseAddView extends JPanel
 	    {
 	    	carCombo.addItem(c.getModel());
 	    }
-	    carCombo.setSelectedIndex(0);
 	    JScrollPane carScrollPane = new JScrollPane(carCombo);    
 		dataPanel.add(carScrollPane);
+		
+		dataPanel.add(transaction_dateLabel);
+		dataPanel.add(transaction_dateField);
 		
 		this.add(dataPanel);
 		

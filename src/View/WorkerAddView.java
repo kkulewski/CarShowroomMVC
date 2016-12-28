@@ -77,7 +77,6 @@ public class WorkerAddView extends JPanel
 	    {
 	    	positionCombo.addItem(p.getTitle());
 	    }
-	    positionCombo.setSelectedIndex(0);
 	    JScrollPane positionScrollPane = new JScrollPane(positionCombo);    
 		dataPanel.add(positionScrollPane);
 		
