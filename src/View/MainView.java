@@ -154,6 +154,23 @@ public class MainView extends JFrame
 		workerSearch.addActionListener(workerSearchListener);
 	}
 	
+	// PURCHASE
+	
+	public void PurchaseAddListener(ActionListener purchaseAddListener) 
+	{
+		purchaseAdd.addActionListener(purchaseAddListener);
+	}
+	
+	public void PurchaseListListener(ActionListener purchaseListListener) 
+	{
+		purchaseList.addActionListener(purchaseListListener);
+	}
+	
+	public void PurchaseSearchListener(ActionListener purchaseSearchListener) 
+	{
+		purchaseSearch.addActionListener(purchaseSearchListener);
+	}
+	
 	public void ActionCommited()
 	{
 		JOptionPane.showMessageDialog(null, "Button clicked");
