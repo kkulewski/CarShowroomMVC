@@ -148,6 +148,9 @@ public class WorkerModel extends Database
 				case "street":
 					selectStatement.setString(1, value);
 					break;
+				case "id_worker":
+					selectStatement.setInt(1, Integer.parseInt(value));
+					break;
 				case "id_position":
 					try 
 					{
