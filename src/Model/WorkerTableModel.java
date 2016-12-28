@@ -77,6 +77,12 @@ public class WorkerTableModel extends AbstractTableModel
         		PositionModel positionModel = new PositionModel();
         		int positionId = worker.getId_position();
         		Position foundPosition = positionModel.find("id_position", String.valueOf(positionId));
+            	if(foundPosition == null)
+            	{
+            		WorkerModel workerModel = new WorkerModel();
+            		workerModel.delete(worker);
+            		return "#OUTDATED!#";
+            	}
             	return foundPosition.getTitle();
             default: return null;
         }
