@@ -16,8 +16,6 @@ import Model.Car;
 import Model.CarModel;
 import Model.Client;
 import Model.ClientModel;
-import Model.Position;
-import Model.PositionModel;
 import Model.Purchase;
 import Model.Worker;
 import Model.WorkerModel;

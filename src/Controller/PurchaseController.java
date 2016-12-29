@@ -7,14 +7,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JComboBox;
-
 import Model.Car;
 import Model.CarModel;
 import Model.Client;
 import Model.ClientModel;
-import Model.Position;
-import Model.PositionModel;
 import Model.Purchase;
 import Model.PurchaseModel;
 import Model.Worker;

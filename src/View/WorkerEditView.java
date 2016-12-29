@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComboBox;
@@ -10,9 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-
-import Model.Position;
-import Model.PositionModel;
 
 public class WorkerEditView
 {

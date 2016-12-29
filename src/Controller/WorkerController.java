@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JComboBox;
-
 import Model.Position;
 import Model.PositionModel;
 import Model.Worker;
