@@ -1,6 +1,8 @@
 package View;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -87,6 +89,32 @@ public class MainView extends JFrame
 		menuPurchase.add(purchaseList);
 		purchaseSearch = new JMenuItem("Search purchase...");
 		menuPurchase.add(purchaseSearch);
+		
+		
+		//GREET PANEL
+		//
+		JPanel greetPanel = new JPanel(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		JLabel title = new JLabel("CarShowroom MVC");
+		greetPanel.add(title, c);
+		c.gridx = 0;
+		c.gridy = 1;
+		JLabel author = new JLabel("Krzysztof Kulewski");
+		greetPanel.add(author, c);
+		c.gridx = 0;
+		c.gridy = 2;
+		JLabel year = new JLabel("UG - 2016");
+		greetPanel.add(year, c);
+		
+		greetPanel.setVisible(true);
+		this.add(greetPanel);
+		this.invalidate();
+		this.validate();
+		//
+		//END GREET PANEL
+			
 	}
 	
 	//CLIENT
