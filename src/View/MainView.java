@@ -30,6 +30,7 @@ public class MainView extends JFrame
 		
 		menuMain = new JMenu("Main");
 		menuBar.add(menuMain);
+		testData = new JMenuItem("Add test data");
 		menuMain.add(testData);
 		
 		//CLIENT
