@@ -95,6 +95,7 @@ public class MainController
 	public MainController(MainView mainView)
 	{
 		this.mainView = mainView;
+		mainView.TestDataListener(new TestDataListener());
 		
 		this.clientModel = new ClientModel();
 		this.clientAddView = new ClientAddView();
@@ -400,6 +401,15 @@ public class MainController
 			mainView.setContentPane(purchaseSearchView);
 			mainView.invalidate();
 			mainView.validate();
+		}
+	}
+	
+	class TestDataListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) 
+		{	
+			FillWithTestData();
 		}
 	}
 	

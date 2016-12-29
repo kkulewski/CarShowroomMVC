@@ -10,7 +10,8 @@ public class MainView extends JFrame
 {
 	JMenuBar menuBar;
 	JMenu menuMain, menuClient, menuWorker, menuPosition, menuCar, menuPurchase;
-	JMenuItem clientAdd, clientList, clientSearch, 
+	JMenuItem testData,
+	clientAdd, clientList, clientSearch, 
 	workerAdd, workerList, workerSearch,
 	positionAdd, positionList, positionSearch,
 	carAdd, carList, carSearch,
@@ -29,6 +30,7 @@ public class MainView extends JFrame
 		
 		menuMain = new JMenu("Main");
 		menuBar.add(menuMain);
+		menuMain.add(testData);
 		
 		//CLIENT
 		menuClient = new JMenu("Client");
@@ -169,6 +171,11 @@ public class MainView extends JFrame
 	public void PurchaseSearchListener(ActionListener purchaseSearchListener) 
 	{
 		purchaseSearch.addActionListener(purchaseSearchListener);
+	}
+	
+	public void TestDataListener(ActionListener testDataListener) 
+	{
+		testData.addActionListener(testDataListener);
 	}
 	
 	public void ActionCommited()
