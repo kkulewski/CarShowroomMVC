@@ -6,13 +6,15 @@ public class Car
 	private String brand;
 	private String model;
 	private double price;
+	private boolean isNew;
 	
-	public Car(int id, String brand, String model, double price) {
+	public Car(int id, String brand, String model, double price, boolean isNew) {
 		super();
 		this.id = id;
 		this.brand = brand;
 		this.model = model;
 		this.price = price;
+		this.isNew = isNew;
 	}
 	
 	public int getId() {
@@ -38,6 +40,13 @@ public class Car
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public boolean getIsNew() {
+		return isNew;
+	}
+	public void setIsNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 	
 }

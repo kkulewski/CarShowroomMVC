@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,6 +23,9 @@ public class CarAddView extends JPanel
 	//PRICE
 	public JTextField priceField = new JTextField(20);
 	JLabel priceLabel = new JLabel("Price:");
+	//ISNEW
+	public JCheckBox isNewField = new JCheckBox();
+	JLabel isNewLabel = new JLabel("Is new:");
 	//SUBMIT BUTTON
 	public JButton submitButton = new JButton("Add");
 	
@@ -44,6 +48,9 @@ public class CarAddView extends JPanel
 		//PRICE
 		dataPanel.add(priceLabel);
 		dataPanel.add(priceField);
+		//ISNEW
+		dataPanel.add(isNewLabel);
+		dataPanel.add(isNewField);
 		this.add(dataPanel);
 		
 		//DATA2

@@ -201,10 +201,10 @@ public class MainController
 		
 		
 		//EXAMPLE CARS
-		carModel.insert(new Car(1, "Audi", "A7", 650000));
-		carModel.insert(new Car(2, "VW", "Golf", 90000));
-		carModel.insert(new Car(3, "VW", "Passat", 160000));
-		carModel.insert(new Car(4, "Audi", "A3", 125000));
+		carModel.insert(new Car(1, "Audi", "A7", 650000, true));
+		carModel.insert(new Car(2, "VW", "Golf", 90000, true));
+		carModel.insert(new Car(3, "VW", "Passat", 160000, true));
+		carModel.insert(new Car(4, "Audi", "A3", 125000, true));
 		
 		//EXAMPLE PURCHASES
 		purchaseModel.insert(new Purchase(1, 1, 1, 1, Date.valueOf("2000-01-01")));

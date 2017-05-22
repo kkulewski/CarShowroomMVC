@@ -15,12 +15,13 @@ public class CarModel extends Database
 		
 		try
 		{
-			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?, ?);";
+			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?, ?, ?);";
 			PreparedStatement insertStatement = conn.prepareStatement(query);
 			
 			insertStatement.setString(1, row.getBrand());
 			insertStatement.setString(2, row.getModel());
 			insertStatement.setDouble(3, row.getPrice());
+			insertStatement.setBoolean(4, row.getIsNew());
 			
 			insertStatement.execute();
 			insertStatement.close();
@@ -58,13 +59,14 @@ public class CarModel extends Database
 		
 		try
 		{
-			String query = "UPDATE "+tableName+" SET brand = ?, model = ?, price = ? WHERE id_"+tableName+" = ?;";
+			String query = "UPDATE "+tableName+" SET brand = ?, model = ?, price = ?, isNew = ? WHERE id_"+tableName+" = ?;";
 			PreparedStatement updateStatement = conn.prepareStatement(query);
 			
 			updateStatement.setString(1, row.getBrand());
 			updateStatement.setString(2, row.getModel());
 			updateStatement.setDouble(3, row.getPrice());
-			updateStatement.setInt(4, row.getId());
+			updateStatement.setBoolean(4, row.getIsNew());
+			updateStatement.setInt(5, row.getId());
 			
 			updateStatement.execute();
 			updateStatement.close();
@@ -93,7 +95,8 @@ public class CarModel extends Database
 	            			result.getInt("id_car"), 
 	            			result.getString("brand"), 
 	            			result.getString("model"), 
-	            			result.getDouble("price")
+	            			result.getDouble("price"),
+	            			result.getBoolean("isNew")
 	            		);
 	            rowList.add(row);
 	        }
@@ -133,6 +136,9 @@ public class CarModel extends Database
 						selectStatement.setLong(1, 0L);
 					}
 					break;
+				case "isNew":
+					selectStatement.setBoolean(1, Boolean.parseBoolean(value));
+					break;
 				case "id_car":
 					selectStatement.setInt(1, Integer.parseInt(value));
 					break;
@@ -151,7 +157,8 @@ public class CarModel extends Database
 	            			result.getInt("id_car"), 
 	            			result.getString("brand"), 
 	            			result.getString("model"), 
-	            			result.getDouble("price")
+	            			result.getDouble("price"),
+	            			result.getBoolean("isNew")
 	            		);
 	        }
 	        return foundRow;

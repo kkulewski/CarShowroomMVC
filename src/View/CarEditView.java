@@ -3,6 +3,7 @@ package View;
 import java.awt.GridLayout;
 import java.util.List;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +22,9 @@ public class CarEditView
     //PRICE
 	JLabel priceLabel = new JLabel("Price:");
     public JTextField priceField = new JTextField();
+    //ISNEW
+	JLabel isNewLabel = new JLabel("Is new:");
+    public JCheckBox isNewField = new JCheckBox();
     
     public CarEditView()
     {
@@ -32,6 +36,9 @@ public class CarEditView
         
         panel.add(priceLabel);
         panel.add(priceField);
+        
+        panel.add(isNewLabel);
+        panel.add(isNewField);
     }
 	
 	

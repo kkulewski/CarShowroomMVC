@@ -11,7 +11,8 @@ public class CarTableModel extends AbstractTableModel
     {
         "Brand",
         "Model",
-        "Price"
+        "Price",
+        "IsNew"
     };
  
     private List<Car> cars;
@@ -68,6 +69,7 @@ public class CarTableModel extends AbstractTableModel
             case 0: return car.getBrand();
             case 1: return car.getModel();
             case 2: return car.getPrice();
+            case 3: return car.getIsNew();
             default: return null;
         }
     }
@@ -82,6 +84,7 @@ public class CarTableModel extends AbstractTableModel
             case 0: car.setBrand((String)value); break;
             case 1: car.setModel((String)value); break;
             case 2: car.setPrice((double)value); break;
+            case 3: car.setIsNew((boolean)value); break;
         }
      
         fireTableCellUpdated(row, column);

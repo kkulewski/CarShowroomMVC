@@ -76,7 +76,8 @@ public class Database
         		+ "id_car INTEGER PRIMARY KEY AUTOINCREMENT, "
         		+ "brand varchar(20) NOT NULL, "
         		+ "model varchar(20) NOT NULL, "
-        		+ "price REAL NOT NULL"
+        		+ "price REAL NOT NULL, "
+        		+ "isNew BOOL NOT NULL"
         		+ ")";
         
         String createPurchaseQuery = ""

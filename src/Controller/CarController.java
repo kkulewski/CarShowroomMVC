@@ -92,6 +92,7 @@ public class CarController
 		String car_model = addView.modelField.getText();
 		double price = 0;
 		String priceAsString = "0";
+		boolean isNew = addView.isNewField.isSelected();
 		try
 		{
 			price = Double.parseDouble(addView.priceField.getText());
@@ -128,13 +129,14 @@ public class CarController
 		if(dataIsValid == true)
 		{
 			int tempId = 0;
-			Car tcar = new Car(tempId, brand, car_model, price);
+			Car tcar = new Car(tempId, brand, car_model, price, isNew);
 			
 			model.insert(tcar);
 			
 			addView.brandField.setText("");
 			addView.modelField.setText("");
 			addView.priceField.setText("");
+			addView.isNewField.setText("");
 			
 			addView.DisplaySuccessPopup();
 		}
@@ -184,6 +186,7 @@ public class CarController
 			String car_model = editView.modelField.getText();
 			double price = 0;
 			String priceAsString = "0";
+			boolean isNew = editView.isNewField.isSelected();
 			try
 			{
 				price = Double.parseDouble(editView.priceField.getText());
@@ -222,6 +225,7 @@ public class CarController
 				selectedCar.setBrand(brand);
 				selectedCar.setModel(car_model);
 				selectedCar.setPrice(price);
+				selectedCar.setIsNew(isNew);
 				
 				model.update(selectedCar);
 				
