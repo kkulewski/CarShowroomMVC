@@ -136,7 +136,7 @@ public class CarController
 			addView.brandField.setText("");
 			addView.modelField.setText("");
 			addView.priceField.setText("");
-			addView.isNewField.setText("");
+			addView.isNewField.setSelected(false);
 			
 			addView.DisplaySuccessPopup();
 		}

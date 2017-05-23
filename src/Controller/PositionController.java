@@ -131,6 +131,8 @@ public class PositionController
 			
 			addView.titleField.setText("");
 			addView.salaryField.setText("");
+			addView.isFullTimeField.setSelected(false);
+			addView.isContractField.setSelected(false);
 			
 			addView.DisplaySuccessPopup();
 		}
