@@ -182,22 +182,22 @@ public class MainController
 	public void FillWithTestData()
 	{
 		//EXAMPLE CLIENTS
-		clientModel.insert(new Client(1, "Jan", "Kowalski", 12233455666L, "Warszawa", "Dluga 3"));
-		clientModel.insert(new Client(2, "Janusz", "Nowak", 87213452266L, "Gdansk", "Krotka 4a"));
-		clientModel.insert(new Client(3, "Michal", "Malinowski", 77733755116L, "Gdynia", "Srednia 70"));
-		clientModel.insert(new Client(4, "Dawid", "Wisniewski", 65413415261L, "Sopot", "Szeroka 1A"));
-		clientModel.insert(new Client(5, "Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11"));
+		clientModel.insert(new Client(1, "John", "Kowalski", 12233455666L, "Chicago", "Long 3"));
+		clientModel.insert(new Client(2, "Dave", "Smith", 87213452266L, "Houston", "Montgomery 4a"));
+		clientModel.insert(new Client(3, "Luis", "Thompson", 77733755116L, "Dallas", "Oak 70"));
+		clientModel.insert(new Client(4, "Henry", "Lopez", 65413415261L, "Sopot", "Second 1A"));
+		clientModel.insert(new Client(5, "Matthew", "Brown", 55131477335L, "Denver", "Pine 11"));
 		
 		//EXAMPLE POSITIONS
-		positionModel.insert(new Position(1, "Sprzedawca", 2500, true, false));
-		positionModel.insert(new Position(2, "Ksiegowy", 3500, true, true));
+		positionModel.insert(new Position(1, "Dealer", 2500, true, false));
+		positionModel.insert(new Position(2, "Accountant", 3500, true, true));
 		positionModel.insert(new Position(3, "Manager", 8000, true, false));
-		positionModel.insert(new Position(4, "Stazysta", 1200, false, false));
+		positionModel.insert(new Position(4, "Intern", 1200, false, false));
 		
 		//EXAMPLE WORKERS
-		workerModel.insert(new Worker(1, "Dawid", "Jablonski", 67231155411L, "Gdansk", "Diamentowa 1", 1));
-		workerModel.insert(new Worker(2, "Mateusz", "Sosnowski", 55513455565L, "Warszawa", "Opalowa 7b", 2));
-		workerModel.insert(new Worker(3, "Lukasz", "Swierk", 32131755221L, "Katowice", "Brylantowa 12", 3));
+		workerModel.insert(new Worker(1, "Tom", "Jackson", 67231155411L, "Phoenix", "Cedar 1", 1));
+		workerModel.insert(new Worker(2, "Mateusz", "Sosnowski", 55513455565L, "Chicago", "Long 7b", 2));
+		workerModel.insert(new Worker(3, "Luke", "Garcia", 32131755221L, "Dallas", "Oak 12", 3));
 		
 		
 		//EXAMPLE CARS
