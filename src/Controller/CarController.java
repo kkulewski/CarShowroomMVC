@@ -176,6 +176,7 @@ public class CarController
 		editView.brandField.setText(selectedCar.getBrand());
 		editView.modelField.setText(selectedCar.getModel());
 		editView.priceField.setText(String.valueOf(selectedCar.getPrice()));
+		editView.isNewField.setSelected(selectedCar.getIsNew());
 		
 		boolean itemModified = editView.DisplayPopup();
 		
