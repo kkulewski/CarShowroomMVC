@@ -15,11 +15,13 @@ public class PositionModel extends Database
 		
 		try
 		{
-			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?);";
+			String query = "INSERT INTO "+tableName+" VALUES (NULL, ?, ?, ?, ?);";
 			PreparedStatement insertStatement = conn.prepareStatement(query);
 			
 			insertStatement.setString(1, row.getTitle());
 			insertStatement.setInt(2, row.getSalary());
+			insertStatement.setBoolean(3, row.getIsFullTime());
+			insertStatement.setBoolean(4, row.getIsContract());
 			
 			insertStatement.execute();
 			insertStatement.close();
@@ -57,12 +59,14 @@ public class PositionModel extends Database
 		
 		try
 		{
-			String query = "UPDATE "+tableName+" SET title = ?, salary = ? WHERE id_"+tableName+" = ?;";
+			String query = "UPDATE "+tableName+" SET title = ?, salary = ?, isFullTime = ?, isContract = ? WHERE id_"+tableName+" = ?;";
 			PreparedStatement updateStatement = conn.prepareStatement(query);
 			
 			updateStatement.setString(1, row.getTitle());
 			updateStatement.setInt(2, row.getSalary());
 			updateStatement.setInt(3, row.getId());
+			updateStatement.setBoolean(4, row.getIsFullTime());
+			updateStatement.setBoolean(5, row.getIsContract());
 			
 			updateStatement.execute();
 			updateStatement.close();
@@ -90,7 +94,9 @@ public class PositionModel extends Database
 	            		(
 	            			result.getInt("id_position"), 
 	            			result.getString("title"), 
-	            			result.getInt("salary")
+	            			result.getInt("salary"),
+	            			result.getBoolean("isFullTime"),
+	            			result.getBoolean("isContract")
 	            		);
 	            rowList.add(row);
 	        }
@@ -120,6 +126,12 @@ public class PositionModel extends Database
 				case "id_position":
 					selectStatement.setInt(1, Integer.parseInt(value));
 					break;
+				case "isFullTime":
+					selectStatement.setBoolean(1, Boolean.parseBoolean(value));
+					break;
+				case "isContract":
+					selectStatement.setBoolean(1, Boolean.parseBoolean(value));
+					break;
 				default:
 					selectStatement.setString(1, "title");
 					break;
@@ -134,7 +146,9 @@ public class PositionModel extends Database
 	            		(
 	            			result.getInt("id_position"), 
 	            			result.getString("title"), 
-	            			result.getInt("salary")
+	            			result.getInt("salary"),
+	            			result.getBoolean("isFullTime"),
+	            			result.getBoolean("isContract")
 	            		);
 	        }
 	        return foundRow;

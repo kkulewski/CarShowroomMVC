@@ -5,12 +5,16 @@ public class Position
 	private int id;
 	private String title;
 	private int salary;
+	private boolean isFullTime;
+	private boolean isContract;
 	
-	public Position(int id, String title, int salary) {
+	public Position(int id, String title, int salary, boolean isFullTime, boolean isContract) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.salary = salary;
+		this.isFullTime = isFullTime;
+		this.isContract = isContract;
 	}
 	
 	public int getId() {
@@ -30,5 +34,17 @@ public class Position
 	}
 	public void setSalary(int salary) {
 		this.salary = salary;
+	}
+	public boolean getIsFullTime() {
+		return isFullTime;
+	}
+	public void setIsFullTime(boolean isFullTime) {
+		this.isFullTime = isFullTime;
+	}
+	public boolean getIsContract() {
+		return isContract;
+	}
+	public void setIsContract(boolean isContract) {
+		this.isContract = isContract;
 	}
 }

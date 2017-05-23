@@ -54,7 +54,9 @@ public class Database
         		+ "( "
         		+ "id_position INTEGER PRIMARY KEY AUTOINCREMENT, "
         		+ "title varchar(20) NOT NULL,"
-        		+ "salary REAL NOT NULL"
+        		+ "salary REAL NOT NULL,"
+        		+ "isFullTime BOOL NOT NULL,"
+        		+ "isContract BOOL NOT NULL"
         		+ ")";
         
         String createWorkerQuery = ""

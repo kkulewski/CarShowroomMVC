@@ -89,6 +89,8 @@ public class PositionController
 	public void Insert()
 	{
 		String title = addView.titleField.getText();
+		boolean isFullTime = addView.isFullTimeField.isSelected();
+		boolean isContract = addView.isContractField.isSelected();
 		int salary = 0;
 		String salaryAsString = "0";
 		try
@@ -123,7 +125,7 @@ public class PositionController
 		if(dataIsValid == true)
 		{
 			int tempId = 0;
-			Position Position = new Position(tempId, title, salary);
+			Position Position = new Position(tempId, title, salary, isFullTime, isContract);
 			
 			model.insert(Position);
 			
@@ -167,6 +169,8 @@ public class PositionController
 		// FILL POPUP FIELDS WITH SELECTED ITEM DATA
 		editView.titleField.setText(selectedPosition.getTitle());
 		editView.salaryField.setText(String.valueOf(selectedPosition.getSalary()));
+		editView.isFullTimeField.setSelected(selectedPosition.getIsFullTime());
+		editView.isContractField.setSelected(selectedPosition.getIsContract());
 		
 		boolean itemModified = editView.DisplayPopup();
 		
@@ -174,6 +178,8 @@ public class PositionController
 		{
 			//GET NEW DATA FROM POPUP
 			String title = editView.titleField.getText();
+			boolean isFullTime = editView.isFullTimeField.isSelected();
+			boolean isContract = editView.isContractField.isSelected();
 			int salary = 0;
 			String salaryAsString = "0";
 			try
@@ -209,6 +215,8 @@ public class PositionController
 			{
 				selectedPosition.setTitle(title);
 				selectedPosition.setSalary(salary);
+				selectedPosition.setIsFullTime(isFullTime);
+				selectedPosition.setIsContract(isContract);
 				
 				model.update(selectedPosition);
 				

@@ -189,10 +189,10 @@ public class MainController
 		clientModel.insert(new Client(5, "Mateusz", "Grucha", 55131477335L, "Poznan", "Waska 11"));
 		
 		//EXAMPLE POSITIONS
-		positionModel.insert(new Position(1, "Sprzedawca", 2500));
-		positionModel.insert(new Position(2, "Ksiegowy", 3500));
-		positionModel.insert(new Position(3, "Manager", 8000));
-		positionModel.insert(new Position(4, "Stazysta", 1200));
+		positionModel.insert(new Position(1, "Sprzedawca", 2500, true, false));
+		positionModel.insert(new Position(2, "Ksiegowy", 3500, true, true));
+		positionModel.insert(new Position(3, "Manager", 8000, true, false));
+		positionModel.insert(new Position(4, "Stazysta", 1200, false, false));
 		
 		//EXAMPLE WORKERS
 		workerModel.insert(new Worker(1, "Dawid", "Jablonski", 67231155411L, "Gdansk", "Diamentowa 1", 1));

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,6 +20,12 @@ public class PositionAddView extends JPanel
 	//SALARY
 	public JTextField salaryField = new JTextField(20);
 	JLabel salaryLabel = new JLabel("Salary:");
+	//ISFULLTIME
+	public JCheckBox isFullTimeField = new JCheckBox();
+	JLabel isFullTimeLabel = new JLabel("Full time:");
+	//ISCONTRACT
+	public JCheckBox isContractField = new JCheckBox();
+	JLabel isContractLabel = new JLabel("Contract:");
 	//SUBMIT BUTTON
 	public JButton submitButton = new JButton("Add");
 	
@@ -38,6 +45,12 @@ public class PositionAddView extends JPanel
 		//SALARY
 		dataPanel.add(salaryLabel);
 		dataPanel.add(salaryField);
+		//ISFULLTIME
+		dataPanel.add(isFullTimeLabel);
+		dataPanel.add(isFullTimeField);
+		//ISCONTRACT
+		dataPanel.add(isContractLabel);
+		dataPanel.add(isContractField);
 		//PADDING
 		JLabel empty1 = new JLabel(" ");
 		JLabel empty2 = new JLabel(" ");

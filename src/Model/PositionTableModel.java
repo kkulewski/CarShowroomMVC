@@ -10,7 +10,9 @@ public class PositionTableModel extends AbstractTableModel
     private String[] columnNames =
     {
         "Title",
-        "Salary"
+        "Salary",
+        "isFullTime",
+        "isContract"
     };
  
     private List<Position> positions;
@@ -66,6 +68,8 @@ public class PositionTableModel extends AbstractTableModel
         {
             case 0: return position.getTitle();
             case 1: return position.getSalary();
+            case 2: return position.getIsFullTime();
+            case 3: return position.getIsContract();
             default: return null;
         }
     }
@@ -79,6 +83,8 @@ public class PositionTableModel extends AbstractTableModel
         {
             case 0: position.setTitle((String)value); break;
             case 1: position.setSalary((int)value); break;
+            case 2: position.setIsFullTime((boolean)value); break;
+            case 3: position.setIsContract((boolean)value); break;
         }
      
         fireTableCellUpdated(row, column);

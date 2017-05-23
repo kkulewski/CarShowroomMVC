@@ -3,6 +3,7 @@ package View;
 import java.awt.GridLayout;
 import java.util.List;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,6 +19,12 @@ public class PositionEditView
     //SALARY
 	JLabel salaryLabel = new JLabel("Salary:");
     public JTextField salaryField = new JTextField();
+	//ISFULLTIME
+	public JCheckBox isFullTimeField = new JCheckBox();
+	JLabel isFullTimeLabel = new JLabel("Full time:");
+	//ISCONTRACT
+	public JCheckBox isContractField = new JCheckBox();
+	JLabel isContractLabel = new JLabel("Contract:");
     
     public PositionEditView()
     {
@@ -26,6 +33,12 @@ public class PositionEditView
         
         panel.add(salaryLabel);
         panel.add(salaryField);
+        
+        panel.add(isFullTimeLabel);
+        panel.add(isFullTimeField);
+        
+        panel.add(isContractLabel);
+        panel.add(isContractField);
         
     }
 	
