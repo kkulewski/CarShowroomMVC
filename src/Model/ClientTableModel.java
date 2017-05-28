@@ -11,7 +11,7 @@ public class ClientTableModel extends AbstractTableModel
     {
         "Name",
         "Surname",
-        "PESEL",
+        "CNUM",
         "City",
         "Street"
     };
@@ -69,7 +69,7 @@ public class ClientTableModel extends AbstractTableModel
         {
             case 0: return client.getName();
             case 1: return client.getSurname();
-            case 2: return client.getPesel();
+            case 2: return client.getCnum();
             case 3: return client.getCity();
             case 4: return client.getStreet();
             default: return null;
@@ -85,7 +85,7 @@ public class ClientTableModel extends AbstractTableModel
         {
             case 0: client.setName((String)value); break;
             case 1: client.setSurname((String)value); break;
-            case 2: client.setPesel((long)value); break;
+            case 2: client.setCnum((long)value); break;
             case 3: client.setCity((String)value); break;
             case 4: client.setStreet((String)value); break;
         }

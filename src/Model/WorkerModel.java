@@ -20,7 +20,7 @@ public class WorkerModel extends Database
 			
 			insertStatement.setString(1, row.getName());
 			insertStatement.setString(2, row.getSurname());
-			insertStatement.setLong(3, row.getPesel());
+			insertStatement.setLong(3, row.getCnum());
 			insertStatement.setString(4, row.getCity());
 			insertStatement.setString(5, row.getStreet());
 			insertStatement.setInt(6, row.getId_position());
@@ -61,12 +61,12 @@ public class WorkerModel extends Database
 		
 		try
 		{
-			String query = "UPDATE "+tableName+" SET name = ?, surname = ?, pesel = ?, city = ?, street = ?, id_position = ? WHERE id_"+tableName+" = ?;";
+			String query = "UPDATE "+tableName+" SET name = ?, surname = ?, cnum = ?, city = ?, street = ?, id_position = ? WHERE id_"+tableName+" = ?;";
 			PreparedStatement updateStatement = conn.prepareStatement(query);
 			
 			updateStatement.setString(1, row.getName());
 			updateStatement.setString(2, row.getSurname());
-			updateStatement.setLong(3, row.getPesel());
+			updateStatement.setLong(3, row.getCnum());
 			updateStatement.setString(4, row.getCity());
 			updateStatement.setString(5, row.getStreet());
 			updateStatement.setInt(6, row.getId_position());
@@ -99,7 +99,7 @@ public class WorkerModel extends Database
 	            			result.getInt("id_worker"), 
 	            			result.getString("name"), 
 	            			result.getString("surname"), 
-	            			result.getLong("pesel"), 
+	            			result.getLong("cnum"), 
 	            			result.getString("city"), 
 	            			result.getString("street"),
 	            			result.getInt("id_position")
@@ -132,7 +132,7 @@ public class WorkerModel extends Database
 				case "surname":
 					selectStatement.setString(1, value);
 					break;
-				case "pesel":
+				case "cnum":
 					try 
 					{
 						selectStatement.setLong(1, Long.parseLong(value));	
@@ -176,7 +176,7 @@ public class WorkerModel extends Database
 	            			result.getInt("id_worker"), 
 	            			result.getString("name"), 
 	            			result.getString("surname"), 
-	            			result.getLong("pesel"), 
+	            			result.getLong("cnum"), 
 	            			result.getString("city"), 
 	            			result.getString("street"),
 	            			result.getInt("id_position")

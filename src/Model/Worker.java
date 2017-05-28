@@ -5,17 +5,17 @@ public class Worker
 	private int id;
 	private String name;
 	private String surname;
-	private long pesel;
+	private long cnum;
 	private String city;
 	private String street;
 	private int id_position;
 	
-	public Worker(int id, String name, String surname, long pesel, String city, String street, int id_position) {
+	public Worker(int id, String name, String surname, long cnum, String city, String street, int id_position) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
-		this.pesel = pesel;
+		this.cnum = cnum;
 		this.city = city;
 		this.street = street;
 		this.id_position = id_position;
@@ -39,11 +39,11 @@ public class Worker
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public long getPesel() {
-		return pesel;
+	public long getCnum() {
+		return cnum;
 	}
-	public void setPesel(long pesel) {
-		this.pesel = pesel;
+	public void setCnum(long cnum) {
+		this.cnum = cnum;
 	}
 	public String getCity() {
 		return city;

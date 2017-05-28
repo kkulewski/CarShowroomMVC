@@ -44,7 +44,7 @@ public class Database
         		+ "id_client INTEGER PRIMARY KEY AUTOINCREMENT, "
         		+ "name varchar(20) NOT NULL, "
         		+ "surname varchar(50) NOT NULL, "
-        		+ "pesel bigint UNIQUE, "
+        		+ "cnum bigint UNIQUE, "
         		+ "city varchar(30) NOT NULL, "
         		+ "street varchar(70) NOT NULL"
         		+ ")";
@@ -65,7 +65,7 @@ public class Database
         		+ "id_worker INTEGER PRIMARY KEY AUTOINCREMENT, "
         		+ "name varchar(20) NOT NULL, "
         		+ "surname varchar(50) NOT NULL, "
-        		+ "pesel bigint UNIQUE, "
+        		+ "cnum bigint UNIQUE, "
         		+ "city varchar(30) NOT NULL, "
         		+ "street varchar(70) NOT NULL, "
         		+ "id_position INTEGER, "

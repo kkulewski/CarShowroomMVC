@@ -25,9 +25,9 @@ public class WorkerAddView extends JPanel
 	//SURNAME
 	public JTextField surnameField = new JTextField(20);
 	JLabel surnameLabel = new JLabel("Surname:");
-	//PESEL
-	public JTextField peselField = new JTextField(20);
-	JLabel peselLabel = new JLabel("PESEL:");
+	//CNUM
+	public JTextField cnumField = new JTextField(20);
+	JLabel cnumLabel = new JLabel("CNUM:");
 	//CITY
 	public JTextField cityField = new JTextField(20);
 	JLabel cityLabel = new JLabel("City:");
@@ -56,9 +56,9 @@ public class WorkerAddView extends JPanel
 		//SURNAME
 		dataPanel.add(surnameLabel);
 		dataPanel.add(surnameField);
-		//PESEL
-		dataPanel.add(peselLabel);
-		dataPanel.add(peselField);
+		//CNUM
+		dataPanel.add(cnumLabel);
+		dataPanel.add(cnumField);
 		this.add(dataPanel);
 		
 		

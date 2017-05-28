@@ -43,7 +43,7 @@ public class ClientSearchView extends JPanel
 	    searchRowLabel = new JLabel("Select column to search:");
 	    dataPanel.add(searchRowLabel);
 		
-	    String[] rowNames = new String[]{"name", "surname", "pesel", "city", "street" };
+	    String[] rowNames = new String[]{"name", "surname", "cnum", "city", "street" };
 	    searchRowCombo = new JComboBox<String>(rowNames);    
 	    searchRowCombo.setSelectedIndex(0);
 	    JScrollPane searchRowScrollPane = new JScrollPane(searchRowCombo);    
@@ -107,13 +107,13 @@ public class ClientSearchView extends JPanel
 		panel.add(surnameLabel);
 		panel.add(surnameField);
 		
-		//PESEL
-		JLabel peselLabel = new JLabel("PESEL:");
-		JTextField peselField = new JTextField();
-		peselField.setText(String.valueOf(foundClient.getPesel()));
-		peselField.setEditable(false);
-		panel.add(peselLabel);
-		panel.add(peselField);
+		//CNUM
+		JLabel cnumLabel = new JLabel("CNUM:");
+		JTextField cnumField = new JTextField();
+		cnumField.setText(String.valueOf(foundClient.getCnum()));
+		cnumField.setEditable(false);
+		panel.add(cnumLabel);
+		panel.add(cnumField);
 		
 		//NAME
 		JLabel cityLabel = new JLabel("City:");

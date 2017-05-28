@@ -18,9 +18,9 @@ public class ClientEditView
     //SURNAME
 	JLabel surnameLabel = new JLabel("Surname:");
     public JTextField surnameField = new JTextField();
-    //PESEL
-	JLabel peselLabel = new JLabel("PESEL:");
-    public JTextField peselField = new JTextField();
+    //CNUM
+	JLabel cnumLabel = new JLabel("CNUM:");
+    public JTextField cnumField = new JTextField();
     //CITY
 	JLabel cityLabel = new JLabel("City:");
     public JTextField cityField = new JTextField();
@@ -36,8 +36,8 @@ public class ClientEditView
         panel.add(surnameLabel);
         panel.add(surnameField);
         
-        panel.add(peselLabel);
-        panel.add(peselField);
+        panel.add(cnumLabel);
+        panel.add(cnumField);
         
         panel.add(cityLabel);
         panel.add(cityField);

@@ -11,7 +11,7 @@ public class WorkerTableModel extends AbstractTableModel
     {
         "Name",
         "Surname",
-        "PESEL",
+        "CNUM",
         "City",
         "Street",
         "Position"
@@ -70,7 +70,7 @@ public class WorkerTableModel extends AbstractTableModel
         {
             case 0: return worker.getName();
             case 1: return worker.getSurname();
-            case 2: return worker.getPesel();
+            case 2: return worker.getCnum();
             case 3: return worker.getCity();
             case 4: return worker.getStreet();
             case 5:
@@ -97,7 +97,7 @@ public class WorkerTableModel extends AbstractTableModel
         {
             case 0: worker.setName((String)value); break;
             case 1: worker.setSurname((String)value); break;
-            case 2: worker.setPesel((long)value); break;
+            case 2: worker.setCnum((long)value); break;
             case 3: worker.setCity((String)value); break;
             case 4: worker.setStreet((String)value); break;
             case 5: worker.setId_position((int)value); break;
